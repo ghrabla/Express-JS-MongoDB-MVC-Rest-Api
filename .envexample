@@ -1,0 +1,2 @@
+mongoURI=mongo+srv//your-db-uri
+port = 8000
