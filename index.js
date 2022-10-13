@@ -1,21 +1,19 @@
-require('dotenv').config();
-const mongoose =  require("mongoose");
+const config = require("./DB/config") 
 const express = require("express")
-//const articles = require("./routes/article.routes");
+const cors = require("cors");
+const articles = require("./routes/article.routes");
 const bodyParser =  require("body-parser");
-
 const app = express();
 const port = process.env.port;
 
-mongoose.connect(process.env.mongoURI, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-.then(res => console.log(`Connection Succesful ${res}`))
-.catch(err => console.log(`Error in DB connection ${err}`));
  
 //body-parser config;
+app.use(articles)
+app.use(cors())
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
-
+ 
 app.get("/", (req, res) => {
     res.send(`<h1>Hello!</h1>`)
 });
