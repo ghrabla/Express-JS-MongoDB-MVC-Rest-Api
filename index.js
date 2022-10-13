@@ -1,3 +1,4 @@
+// requiring features
 require("./DB/config")
 require('dotenv').config();
 const express = require("express")
