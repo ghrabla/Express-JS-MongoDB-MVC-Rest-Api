@@ -1,4 +1,5 @@
-const config = require("./DB/config") 
+require("./DB/config")
+require('dotenv').config();
 const express = require("express")
 const AppError = require("./helpers/appError");
 const errorHandler = require("./helpers/errorHandler");
@@ -16,9 +17,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
  
-app.get("/", (req, res) => {
-    res.send(`<h1>Hello!</h1>`)
-});
+// for testing index page 
+// app.get("/", (req, res) => {
+//     res.send(`<h1>Hello!</h1>`)
+// });
 
 // node js apperror class extanding
 app.all("*", (req, res, next) => {
