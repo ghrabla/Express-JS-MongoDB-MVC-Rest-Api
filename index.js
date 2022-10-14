@@ -9,9 +9,9 @@ const articles = require("./routes/article.routes");
 const bodyParser =  require("body-parser");
 const app = express();
 const port = process.env.port;
-
+  
  
-//body-parser config;
+//body-parser config; 
 app.use(articles)
 app.use(cors())
 app.use(express.json());
@@ -23,17 +23,17 @@ app.use(bodyParser.json());
 //     res.send(`<h1>Hello!</h1>`)
 // });
 
-// node js apperror class extanding
-app.all("*", (req, res, next) => {
+// node js apperror class (error) extanding 
+app.all("*", (req, res, next) => { 
     next(new AppError(`The URL ${req.originalUrl} does not exists`, 404));
   });
-
+ 
 // using errors handler
 app.use(errorHandler);
 
 
 app.listen(port, () => {
-    console.log(`Application is listening at port ${port}`);
+    console.log(`Application is listening at port ${port}`); 
 });
  
 //register the enpoints

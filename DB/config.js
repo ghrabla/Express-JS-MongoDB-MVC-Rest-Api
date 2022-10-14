@@ -7,4 +7,4 @@ const connect = (uri) => {
 .catch(err => console.log(`Error in DB connection ${err}`));
 }
 
-module.exports = connect(process.env.mongoURI);
+module.exports = connect(process.env.mongoURI); 
