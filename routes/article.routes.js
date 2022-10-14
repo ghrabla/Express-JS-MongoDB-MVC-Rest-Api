@@ -8,5 +8,5 @@ router.post("/article", ArticleCtrl.apiCreateArticle);
 router.get("/article/:id", ArticleCtrl.apiGetArticleById);
 router.put("/article/:id", ArticleCtrl.apiUpdateArticle);
 router.delete("/article/:id", ArticleCtrl.apiDeleteArticle);
-
+ 
 module.exports =  router;

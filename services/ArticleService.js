@@ -8,7 +8,7 @@ module.exports = class ArticleService{
         } catch (error) {
             console.log(`Could not fetch articles ${error}`)
         }
-    }
+    } 
 
     static async createArticle(data){
         try {
