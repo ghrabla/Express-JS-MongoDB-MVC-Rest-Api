@@ -3,7 +3,7 @@ const adminService = require("../services/admin");
 module.exports = class admin {
   static async apiGetAlladmins(req, res, next) {
     try {
-      const admins = await adminService.getAlladmins();
+      const admins = await adminService.getAlladmins(); 
       if (!admins) {
         res.status(404).json("There are no admin found yet!");
       }
