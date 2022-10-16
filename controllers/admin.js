@@ -1,5 +1,5 @@
 const adminService = require("../services/admin");
-
+const AppError = require("../helpers/appError")
 module.exports = class admin {
   static async apiGetAlladmins(req, res, next) {
     try {
@@ -13,7 +13,7 @@ module.exports = class admin {
     }
   }
 
-  static async apiGetadminById(req, res, next) {
+  static async apiGetadminById(req, res, next) { 
     try {
       let id = req.params.id || {};
       const admin = await adminService.getadminbyId(id);
@@ -25,7 +25,8 @@ module.exports = class admin {
 
   static async apiCreateadmin(req, res, next) {
     try {
-      // console.log(req.body);
+      console.log(req.body);
+      if (!req.body) return next(new AppError("No form data found", 404));
       const createdadmin =  await adminService.createadmin(req.body);
       res.json(createdadmin);
     } catch (error) {

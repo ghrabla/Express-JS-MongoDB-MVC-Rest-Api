@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const adminSchema = new Schema(
+const adminSchema = Schema(
   {
     fullname: {
       type: String,
@@ -13,7 +13,7 @@ const adminSchema = new Schema(
       required: true,
     },
 
-    password: {
+    password: { 
       type: String,
       required: false,
     },

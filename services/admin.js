@@ -14,7 +14,7 @@ module.exports = class adminService{
         try {
 
             const newadmin = {
-                fullname: data.fullname,
+                fullname: data.fullname,  
                 email: data.email,
                 password: data.password
             }
