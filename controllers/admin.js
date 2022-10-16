@@ -36,12 +36,9 @@ module.exports = class admin {
 
   static async apiUpdateadmin(req, res, next) {
     try {
-      const comment = {};
-      comment.title = req.body.title;
-      comment.body = req.body.body;
-      comment.adminImage = req.body.admin_image;
+     
 
-      const updatedadmin = await adminService.updateadmin(comment);
+      const updatedadmin = await adminService.updateadmin(req.body.fullname,req.body.email,req.body.password);
 
       if (updatedadmin.modifiedCount === 0) {
         throw new Error("Unable to update admin, error occord");

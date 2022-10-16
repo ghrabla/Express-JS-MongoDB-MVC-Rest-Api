@@ -37,8 +37,7 @@ module.exports = class adminService{
     static async updateadmin(fullname, email, password){
             try {
                 const updateResponse =  await admin.updateOne(
-                    {fullname, email, password}, 
-                    {$set: {date: new Date.now()}});
+                    {fullname, email, password});
 
                     return updateResponse;
             } catch (error) {
