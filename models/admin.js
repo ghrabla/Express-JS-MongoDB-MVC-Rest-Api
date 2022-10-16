@@ -15,7 +15,7 @@ const adminSchema = Schema(
 
     password: { 
       type: String,
-      required: false,
+      required: true,
     },
   },
   { timestamps: true }

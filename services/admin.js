@@ -1,4 +1,5 @@
 const admin = require("../models/admin");
+const bcrypt = require("bcrypt"); 
 
 module.exports = class adminService{
     static async getAlladmins(){
@@ -12,11 +13,12 @@ module.exports = class adminService{
 
     static async createadmin(data){
         try {
-
+            const salt = await bcrypt.genSalt(10);
+            let hashpassword = await bcrypt.hash(data.password, salt) ;
             const newadmin = {
                 fullname: data.fullname,  
                 email: data.email,
-                password: data.password
+                password: hashpassword
             }
            const response = await new admin(newadmin).save();
            return response;
@@ -25,6 +27,17 @@ module.exports = class adminService{
         } 
 
     }
+    static async adminlogin(data){
+        try {
+            
+            const checkadmin =  await admin.find({email: data.email});
+            
+            return checkadmin;
+        } catch (error) {
+            console.log(`admin not found. ${error}`)
+        }
+    }
+
     static async getadminbyId(adminId){
         try {
             const singleadminResponse =  await admin.findById({_id: adminId});

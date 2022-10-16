@@ -1,5 +1,6 @@
 const adminService = require("../services/admin");
-const AppError = require("../helpers/appError")
+const AppError = require("../helpers/appError");
+const bcrypt = require("bcrypt");
 module.exports = class admin {
   static async apiGetAlladmins(req, res, next) {
     try {
@@ -18,6 +19,22 @@ module.exports = class admin {
       let id = req.params.id || {};
       const admin = await adminService.getadminbyId(id);
       res.json(admin);
+    } catch (error) {
+      res.status(500).json({ error: error });
+    }
+  }
+  static async apiCheckadmin(req, res, next) { 
+    try {
+      // let email = req.body.email || {};
+      // let password = req.body.password || {};
+      const admin = await adminService.adminlogin(req.body);
+      const validPassword = await bcrypt.compare(req.body.password, admin[0].password);
+      if (validPassword) {
+        res.status(200).json({ message: "Valid password" });
+      } else {
+        res.status(400).json({ error: "Invalid Password" });
+      }
+      //  res.json();
     } catch (error) {
       res.status(500).json({ error: error });
     }
