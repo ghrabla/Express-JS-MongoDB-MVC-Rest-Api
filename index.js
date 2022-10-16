@@ -1,6 +1,5 @@
 // requiring features
-// require("./DB/config")
-const mongoose =  require("mongoose");
+require("./DB/config")
 require('dotenv').config();
 const express = require("express")
 const AppError = require("./helpers/appError");
@@ -12,9 +11,7 @@ const app = express();
 const port = process.env.port;   
   
   
-mongoose.connect(process.env.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true })
-.then(res => console.log(`Connection Succesful ${res}`))
-.catch(err => console.log(`Error in DB connection ${err}`));
+
 //body-parser config;  
 //register the enpoints  
 app.use(cors())
