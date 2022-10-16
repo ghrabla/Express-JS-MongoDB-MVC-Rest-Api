@@ -1,5 +1,5 @@
 // requiring features
-require("./DB/config")
+require("./mongoDB/config")
 require('dotenv').config();
 const express = require("express")
 const AppError = require("./helpers/appError");
