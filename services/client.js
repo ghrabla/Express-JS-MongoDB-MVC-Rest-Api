@@ -61,7 +61,7 @@ module.exports = class clientService{
 
     static async deleteclient(clientId){
         try {
-            const deletedResponse = await client.findOneAndDelete(clientId);
+            const deletedResponse = await client.findByIdAndDelete(clientId);
             return deletedResponse;
         } catch (error) {
             console.log(`Could  ot delete client ${error}`);

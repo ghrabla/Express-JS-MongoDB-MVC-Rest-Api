@@ -58,10 +58,10 @@ module.exports = class busService{
 
     static async deletebus(busId){
         try {
-            const deletedResponse = await bus.findOneAndDelete(busId);
+            const deletedResponse = await bus.findByIdAndDelete(busId);
             return deletedResponse;
         } catch (error) {
-            console.log(`Could  ot delete bus ${error}`);
+            console.log(`Could not delete bus ${error}`);
         }
 
     }

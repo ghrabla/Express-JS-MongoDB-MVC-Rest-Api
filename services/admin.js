@@ -61,7 +61,7 @@ module.exports = class adminService{
 
     static async deleteadmin(adminId){
         try {
-            const deletedResponse = await admin.findOneAndDelete(adminId);
+            const deletedResponse = await admin.findByIdAndDelete(adminId);
             return deletedResponse;
         } catch (error) {
             console.log(`Could  ot delete admin ${error}`);
