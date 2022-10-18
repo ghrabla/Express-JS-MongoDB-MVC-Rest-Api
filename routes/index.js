@@ -3,6 +3,7 @@ const router = express.Router();
 const adminCtrl = require("../controllers/admin");
 const clientCtrl = require("../controllers/client");
 const busCtrl = require("../controllers/bus");
+const tripCtrl = require("../controllers/trip");
 
 
 // admin routes
@@ -30,5 +31,14 @@ router.post("/bus",busCtrl.apiCreatebus);
 router.get("/bus/:id", busCtrl.apiGetbusById);
 router.put("/bus/:id", busCtrl.apiUpdatebus);
 router.delete("/bus/:id", busCtrl.apiDeletebus); 
+
+
+// trip routes
+router.get("/trip", tripCtrl.apiGetAlltrips);
+router.post("/trip/check", tripCtrl.apiChecktrip);
+router.post("/trip",tripCtrl.apiCreatetrip);
+router.get("/trip/:id", tripCtrl.apiGettripById);
+router.put("/trip/:id", tripCtrl.apiUpdatetrip);
+router.delete("/trip/:id", tripCtrl.apiDeletetrip); 
 
 module.exports = router;
