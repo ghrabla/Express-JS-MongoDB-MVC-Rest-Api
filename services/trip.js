@@ -1,4 +1,3 @@
-const trip = require("../controllers/trip");
 const trip = require("../models/trip");
 
 module.exports = class tripService{
@@ -18,7 +17,7 @@ module.exports = class tripService{
                 depart_city: data.depart_city,  
                 arrive_city: data.arrive_city,  
                 depart_date: data.depart_date,
-                arrive_city: data.arrive_city,
+                arrive_date: data.arrive_date,
                 price: data.price,
                 id_bus: data.id_bus
 
@@ -31,10 +30,8 @@ module.exports = class tripService{
 
     }
     static async checktrip(data){
-        try {
-            
-            const checktrip =  await trip.find({depart_city: data.depart_city,arrive_city: data.arrive_city,});
-            
+        try {      
+            const checktrip =  await trip.find({depart_city: data.depart_city,arrive_city: data.arrive_city,});    
             return checktrip;
         } catch (error) {
             console.log(`trip not found. ${error}`)
