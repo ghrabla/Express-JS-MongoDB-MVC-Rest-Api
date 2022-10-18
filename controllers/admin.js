@@ -55,7 +55,7 @@ module.exports = class admin {
     try {
      
 
-      const updatedadmin = await adminService.updateadmin(req.body.fullname,req.body.email,req.body.password);
+      const updatedadmin = await adminService.updateadmin(req.params.id,req.body.fullname,req.body.email,req.body.password);
 
       if (updatedadmin.modifiedCount === 0) {
         throw new Error("Unable to update admin, error occord");

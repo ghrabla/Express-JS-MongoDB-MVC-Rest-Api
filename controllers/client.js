@@ -55,7 +55,7 @@ module.exports = class client {
     try {
      
 
-      const updatedclient = await clientService.updateclient(req.body.fullname,req.body.email,req.body.password);
+      const updatedclient = await clientService.updateclient(req.params.id,req.body.fullname,req.body.email,req.body.password);
 
       if (updatedclient.modifiedCount === 0) {
         throw new Error("Unable to update client, error occord");

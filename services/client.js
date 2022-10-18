@@ -47,9 +47,9 @@ module.exports = class clientService{
         }
     }
 
-    static async updateclient(fullname, email, password){
+    static async updateclient(clientId,fullname, email, password){
             try {
-                const updateResponse =  await client.updateOne(
+                const updateResponse =  await client.findByIdAndUpdate({_id:clientId},
                     {fullname, email, password});
 
                     return updateResponse;

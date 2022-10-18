@@ -47,9 +47,9 @@ module.exports = class adminService{
         }
     }
 
-    static async updateadmin(fullname, email, password){
+    static async updateadmin(adminId,fullname, email, password){
             try {
-                const updateResponse =  await admin.updateOne(
+                const updateResponse =  await admin.findByIdAndUpdate({_id: adminId},
                     {fullname, email, password});
 
                     return updateResponse;
