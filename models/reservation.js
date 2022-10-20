@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const reservationSchema = Schema({
   ticket_number: {
-    type: String,
+    type: Number,
     required: true,
   },
   price: { 

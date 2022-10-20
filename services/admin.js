@@ -27,6 +27,7 @@ module.exports = class adminService{
         } 
 
     }
+    
     static async adminlogin(data){
         try {
             

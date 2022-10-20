@@ -1,10 +1,10 @@
 // requiring features
-require("./mongoDB/config")
+require("./mongoDB/config");
 require('dotenv').config();
-const express = require("express")
+const express = require("express");
 const AppError = require("./helpers/appError");
 const errorHandler = require("./helpers/errorHandler");
-const headers = require("./helpers/headers")
+const headers = require("./helpers/headers");
 const cors = require("cors"); 
 const router = require("./routes");
 const bodyParser =  require("body-parser");
