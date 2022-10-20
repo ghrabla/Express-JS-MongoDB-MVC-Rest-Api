@@ -12,7 +12,7 @@ const navbar = () => {
              <span className="ml-8"><i class="fa-solid fa-phone " ></i> 0625467800</span>
          </div>
      </div>
-     <div className="flex justify-center gap-28 m-4 font-bold uppercase">
+     <div className="flex justify-center gap-28 m-4 uppercase">
       <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
       <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
       <a href="#"><i class="fa-solid fa-registered"></i> Register</a>
