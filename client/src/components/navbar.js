@@ -1,3 +1,6 @@
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 
 const navbar = () => {
@@ -15,10 +18,13 @@ const navbar = () => {
      </div>
      <div className="flex justify-center gap-28 m-4 uppercase">
       <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-      <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+      <Link path="/Login" to="/Login" exact>
+     <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+     </Link>
       <a href="#"><i class="fa-solid fa-registered"></i> Register</a>
       <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
+       <a href="#"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
+      
      </div>
      </>
     )
