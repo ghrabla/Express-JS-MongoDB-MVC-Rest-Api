@@ -28,7 +28,7 @@ const offer = () => {
               </div>
           </div>
           </div>
-          <div className="flex justify-center gap-8 mt-8">
+          <div className="flex justify-center gap-8 mt-8 mb-10">
           <div>
               <img src={`${process.env.PUBLIC_URL}/images/pexels-humphrey-muleba-3525905.png`} className="rounded-t"/>
               <div className="flex justify-between p-4 bg-gray-200 ">
