@@ -25,14 +25,11 @@ module.exports = class adminService{
         } catch (error) {
             console.log(error);
         } 
-
     }
-    
+
     static async adminlogin(data){
-        try {
-            
+        try {  
             const checkadmin =  await admin.find({email: data.email});
-            
             return checkadmin;
         } catch (error) {
             console.log(`admin not found. ${error}`)
@@ -52,7 +49,6 @@ module.exports = class adminService{
             try {
                 const updateResponse =  await admin.findByIdAndUpdate({_id: adminId},
                     {fullname, email, password});
-
                     return updateResponse;
             } catch (error) {
                 console.log(`Could not update admin ${error}` );
