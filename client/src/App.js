@@ -1,29 +1,21 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Header from "./components/header";
-import Offer from "./components/offer";
-import Service from "./components/service";
-import Footer from "./components/footer";
-import Login from "./components/Login";
+import {Routes, Route } from "react-router-dom";
+import Navbar from "./pages/components/navbar";
+import Footer from "./pages/components/footer";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
-    <BrowserRouter>
-   
-        <Routes>
-        <Route path='/Login' element={<Login/>}/>
-          {/* <Route /> */}
-        </Routes>
-        <div className="App">
+    <div className="App">
       <Navbar/>
-      <Header/>
-      <Offer/>
-      <Service/>
+        <Routes>
+          <Route path='/Login' element={<Login/>}/>
+          <Route path='/' element={<Home/>}/>
+        </Routes>
       <Footer/>
     </div>
-      </BrowserRouter>
     </>
   );
 }
