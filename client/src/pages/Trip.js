@@ -1,10 +1,12 @@
-
+import Sidebar from "./components/sidebar";
+import Statistic from "./components/statistic";
 
 const Trip = () =>{
     return(
         <>
           <div>
-              hi there
+              <Statistic/>
+              {/* <Sidebar/> */}
           </div>
         </>
     )
