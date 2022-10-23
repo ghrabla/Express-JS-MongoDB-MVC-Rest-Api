@@ -7,44 +7,44 @@ const login = () => {
         <div className="lg:flex">
             <div className="lg:w-1/2 xl:max-w-screen-sm">
                 <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
-                    <h2 className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
-                    xl:text-bold">Connexion</h2>
+                    <h2 className="text-center text-4xl text-black font-display font-semibold lg:text-left xl:text-5xl
+                    xl:text-bold">Login</h2>
                     <div className="mt-12">
                         <form>
                             <div>
-                                <div className="text-sm font-bold text-gray-700 tracking-wide">Adresse Email </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="mike@gmail.com" v-model="form.email"/>
-                                <p className=" text-red-500 text-xs text-center" v-if="errors.password">
+                                <div className="text-sm font-bold text-gray-700 tracking-wide">Email </div>
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="adnanelgotabi@gmail.com" />
+                                <p className=" text-red-500 text-xs text-center" >
                                        
                                 </p>
                             </div>
                             <div className="mt-8">
                                 <div className="flex justify-between items-center">
                                     <div className="text-sm font-bold text-gray-700 tracking-wide">
-                                       mot de pass
+                                       password
                                     </div>
                                     <div>
                                         <a className="text-xs font-display font-semibold text-cyan-600 hover:text-indigo-800
                                         cursor-pointer">
-                                            Manques votre mot de pass?
+                                            forgot your password ?
                                         </a>
                                     </div> 
                                 </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Entre votre mot de pass" v-model="form.password"/>
-                                <p className=" text-red-500 text-xs text-center" v-if="errors.password">
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Enter your password" />
+                                <p className=" text-red-500 text-xs text-center" >
                                      
                                 </p>
                             </div>
                             <div className="mt-10">
-                                <button className="bg-cyan-600 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                <button className="bg-cyan-600 text-gray-100 p-4 w-full rounded tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-cyan-600
                                 shadow-lg" type="submit">
-                                    Connexion
+                                    Login
                                 </button>
                             </div>
                         </form>
                         <div className="mt-12 text-sm font-display font-semibold text-cyan-600 text-center">
-                            Tu n'as pas un compte ?  <a className="cursor-pointer text-cyan-600 hover:text-indigo-800">S'inscrire</a> 
+                            you don't have an account ?  <a className="cursor-pointer text-cyan-600 hover:text-indigo-800">Register</a> 
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ const login = () => {
             <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
                 <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
                     <svg className="w-5/6 mx-auto" xmlns="http://www.w3.org/2000/svg" id="f080dbb7-9b2b-439b-a118-60b91c514f72" data-name="Layer 1" viewBox="0 0 528.71721 699.76785">
-                        <title>Connexion</title>
+                        <title>Login</title>
                         <rect y="17.06342" width="444" height="657" fill="#535461"/>
                         <polygon points="323 691.063 0 674.063 0 17.063 323 0.063 323 691.063" fill="#7f9cf5"/>
                         <circle cx="296" cy="377.06342" r="4" fill="#535461"/>
