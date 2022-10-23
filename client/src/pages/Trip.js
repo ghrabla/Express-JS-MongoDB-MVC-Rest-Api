@@ -100,22 +100,22 @@ const Trip = () =>{
               <th
                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
-                Produit/marque
+                Depart/Arrive city
               </th>
               <th
                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
-                Prix
+                Price
               </th>
               <th
                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
-                Creatdat/ quant
+                Depart/Arrive date
               </th>
               <th
                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
               >
-                Type
+                Bus
               </th>
               <th
                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"
@@ -126,19 +126,13 @@ const Trip = () =>{
             <tr  v-for="product in products" >
               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <div class="flex">
-                  
-                  <div class="flex-shrink-0 w-10 h-10">
-                    <img
-                      class="w-full h-full rounded-full"
-                     
-                      alt=""
-                    />
-                  </div>
                   <div class="ml-3">
-                    <p class="text-gray-900 whitespace-no-wrap font-bold">
-                     kamal ghrabla
+                    <p class="text-red-900 whitespace-no-wrap ">
+                     Safi
                     </p>
-                    <p class="text-gray-600 whitespace-no-wrap">google</p>
+                    <p class="text-green-700 whitespace-no-wrap font-bold">
+                     Rabat
+                    </p>
                   </div>
                 </div>
               </td>
@@ -147,8 +141,8 @@ const Trip = () =>{
                 <p class="text-gray-600 whitespace-no-wrap">DH</p>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p class="text-gray-900 whitespace-no-wrap">09/12/2022</p>
-                <p class="text-red-600 whitespace-no-wrap font-bold">22</p>
+                <p class="text-red-900 whitespace-no-wrap">09/12/2022</p>
+                <p class="text-green-600 whitespace-no-wrap font-bold">11/12/2022</p>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <span
@@ -158,7 +152,7 @@ const Trip = () =>{
                     aria-hidden
                     class="absolute inset-0 opacity-50 rounded-full"
                   ></span>
-                  <span class="relative">Student</span>
+                  <span class="relative">ACHKID</span>
                 </span>
               </td>
               <td
@@ -180,8 +174,8 @@ const Trip = () =>{
                 <button class="font-bold text-xl" v-if="showaction==product" ><i class="fa-solid fa-xmark"></i></button>
               </td>
               <div class="flex flex-col gap-3" v-if="showaction==product">
-                  <button class="text-green-500 font-bold" ><i class="fas fa-edit" ></i>Editer</button>
-                  <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Supprimer</button>
+                  <button class="text-green-500 font-bold" ><i class="fas fa-edit" ></i>Update</button>
+                  <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
               </div> 
             </tr>
           </tbody>
