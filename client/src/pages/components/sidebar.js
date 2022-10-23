@@ -1,7 +1,6 @@
 const sidebar = () =>{
     return(
-        <>
-          
+        <>   
 		<div class="">
 			<div class="absolute flex top-0 h-screen z-20" >
 				<button class="w-12 h-10 mt-5  rounded text-white bg-gray-600 text-center focus:outline-none hover:bg-gray-500 transition-color duration-300">

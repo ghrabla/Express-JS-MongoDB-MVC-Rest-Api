@@ -27,7 +27,7 @@ const navbar = () => {
       <a href="#"><i class="fa-solid fa-registered"></i> Register</a>
      </Link>
       <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-       <a href="#"><i class="fa-solid fa-cart-shopping"></i> Panier</a>
+       <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
       
      </div>
      </>
