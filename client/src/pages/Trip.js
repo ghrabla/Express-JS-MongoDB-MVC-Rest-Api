@@ -85,8 +85,8 @@ const Trip = () =>{
   <div class="py-8">
     <div>
       <p class="text-xl font-semibold leading-tight flex lg:justify-end justify-center">
-          <button   class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-         <i class="fa fa-plus" aria-hidden="true" ></i> ajouter produit
+          <button   class="bg-transparent hover:bg-blue-500 text-cyan-600 font-semibold hover:text-white py-2 px-4 border border-cyan-600 hover:border-transparent rounded">
+         <i class="fa fa-plus" aria-hidden="true" ></i> Add trip
          </button>
       </p>
     </div>
