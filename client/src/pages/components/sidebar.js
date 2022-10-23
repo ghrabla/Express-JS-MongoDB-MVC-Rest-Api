@@ -20,26 +20,26 @@ const sidebar = () =>{
 						</a>
                         <a href="javascript:void(0)" class="font-bold text-xl my-5 ">
 					
-							<i class="fas fa-chart-bar"></i> Produits
+							<i class="fas fa-chart-bar"></i> Buses
 						
 						</a>
                         <a href="javascript:void(0)" class="font-bold text-xl my-5 ">
 						
-							<i class="fas fa-bell"></i> Ordres
+							<i class="fas fa-bell"></i> Trips
 						
 						</a>
                         <a href="javascript:void(0)" class="font-bold text-xl my-5 ">
 					
-							<i class="fa fa-user" aria-hidden="true"></i> Utulisateurs
+							<i class="fa fa-user" aria-hidden="true"></i> Users
 						
 						</a>
                         <a href="javascript:void(0)" class="font-bold text-xl my-5 ">
 						
-							<i class="fa fa-address-book" aria-hidden="true"></i> Contacts
+							<i class="fa fa-address-book" aria-hidden="true"></i> Reserved
 						
 						</a>
                         <a href="javascript:void(0)" class="font-bold text-xl my-5 " >
-							<i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion
+							<i class="fa fa-sign-out" aria-hidden="true"></i> Logout
 						</a> 
 					</div>
 				</div>

@@ -8,7 +8,7 @@ const statistic = () =>{
                   <i class="fa fa-users fa-3x" aria-hidden="true"></i>
                 </div>
                 <div class="ml-4">
-                  <span class="font-bold ">les utulisateurs</span> 
+                  <span class="font-bold ">total users</span> 
                   <p class="font-bold text-xl">11</p>
                 </div>
             </div>
@@ -17,7 +17,7 @@ const statistic = () =>{
                   <i class="fa-regular fa-message fa-3x"></i>
                 </div>
                 <div class="ml-4">
-                  <span class="font-bold ">les messages</span> 
+                  <span class="font-bold ">total buses</span> 
                   <p class="font-bold text-xl">30</p>
                 </div>
             </div>
@@ -26,7 +26,7 @@ const statistic = () =>{
                   <i class="fa fa-product-hunt fa-3x" aria-hidden="true"></i>
                 </div>
                 <div class="ml-4">
-                  <span class="font-bold ">les produits</span> 
+                  <span class="font-bold ">total trips</span> 
                   <p class="font-bold text-xl">27</p>
                 </div>
             </div>
@@ -35,7 +35,7 @@ const statistic = () =>{
                     <i class="fa fa-first-order fa-3x" aria-hidden="true"></i>
                 </div>
                 <div class="ml-4">
-                  <span class="font-bold ">les ordres</span> 
+                  <span class="font-bold ">total reservations</span> 
                   <p class="font-bold text-xl">12</p>
                 </div>
             </div>
