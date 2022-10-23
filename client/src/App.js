@@ -5,6 +5,7 @@ import Footer from "./pages/components/footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Trip from "./pages/Trip";
+import Loginadmin from "./pages/Loginadmin";
 import Home from "./pages/Home";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/Login' element={<Login/>}/>
+          <Route path='/Loginadmin' element={<Loginadmin/>}/>
           <Route path='/Register' element={<Register/>}/>
           <Route path='/Trip' element={<Trip/>}/>
         </Routes>
