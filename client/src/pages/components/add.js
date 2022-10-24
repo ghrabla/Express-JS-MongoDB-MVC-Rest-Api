@@ -1,7 +1,7 @@
-const Addform = () => {
+const Addform = ({Addpop}) => {
   return (
-    <>
-      <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute">
+    <div className={Addpop ? "block" : "hidden"}>
+      <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute ">
         <a href="#" class="text-white font-bold flex justify-end text-xl mb-5">
           <i class="fa-solid fa-xmark"></i>
         </a>
@@ -115,7 +115,7 @@ const Addform = () => {
           </a>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
