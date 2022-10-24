@@ -15,7 +15,7 @@ const Trip = () => {
     <>
       <div>
         <Sidebar/>
-        <Addform Addpop={Addpop}/>
+        <Addform Addpop={Addpop} showpop={showpop}/>
         <Statistic/>
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
