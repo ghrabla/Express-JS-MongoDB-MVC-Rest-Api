@@ -29,7 +29,7 @@ const Header = () => {
             id="large"
             class="cursor-pointer block py-3 px-2  text-base text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option selected>Choose a country</option>
+            <option selected disabled>Choose a city</option>
             {city.map((one) => (
           <option value={one.ville}>{one.ville}</option>
         ))}
@@ -38,7 +38,7 @@ const Header = () => {
             id="large"
             class="cursor-pointer block py-3 px-2 text-base text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option selected>Choose a country</option>
+            <option selected disabled>Choose a city</option>
             {city.map((one) => (
           <option value={one.ville}>{one.ville}</option>
         ))}
