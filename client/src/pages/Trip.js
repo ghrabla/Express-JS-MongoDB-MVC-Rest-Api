@@ -1,17 +1,27 @@
 import Sidebar from "./components/sidebar";
 import Statistic from "./components/statistic";
+import Addform from "./components/add";
+import { useState } from "react";
 
 const Trip = () => {
+  
+  const [Addpop,setAddpop] = useState(false);
+
+  const showpop = () =>{
+     setAddpop(!Addpop)
+  }
+
   return (
     <>
       <div>
         <Sidebar/>
+        <Addform/>
         <Statistic/>
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
             <div>
               <p class="text-xl font-semibold leading-tight flex lg:justify-end justify-center">
-                <button class="bg-transparent hover:bg-blue-500 text-cyan-600 font-semibold hover:text-white py-2 px-4 border border-cyan-600 hover:border-transparent rounded">
+                <button class="bg-transparent hover:bg-blue-500 text-cyan-600 font-semibold hover:text-white py-2 px-4 border border-cyan-600 hover:border-transparent rounded" onClick={showpop}>
                   <i class="fa fa-plus" aria-hidden="true"></i> Add trip
                 </button>
               </p>
