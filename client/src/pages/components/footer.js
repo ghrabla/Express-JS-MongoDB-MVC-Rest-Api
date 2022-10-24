@@ -7,7 +7,7 @@ const footer = () => {
             <a href="#" className="font-bold">login</a>
          </div>
          <div>
-             <p className="font-bold text-center underline">lorme jhve cjsgiqe ulye  euge ecye Copyright © 2022 book Labs Inc.</p>
+             <p className="font-bold text-center underline">this is last version of book now Copyright © 2022 kamal ghrabla Labs Inc.</p>
              <div className="flex justify-center gap-10 text-3xl py-5">
              <a href="#"><i class="fa-brands fa-facebook"></i></a>
              <a href="#"><i class="fa-brands fa-instagram"></i></a>

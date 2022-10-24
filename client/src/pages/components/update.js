@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-const Addform = ({Addpop,showpop}) => {
+const Updateform = ({showupdate,funshowupdate}) => {
 
     const [city,setcity] = useState([]) 
     useEffect(()=>{
@@ -13,9 +13,9 @@ const Addform = ({Addpop,showpop}) => {
     },[])
 
   return (
-    <div className={Addpop ? "block" : "hidden"}>
+    <div className={showupdate ? "block" : "hidden"}>
       <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute ">
-        <a href="javascript:void(0)" class="text-white font-bold flex justify-end text-xl mb-5" onClick={showpop}>
+        <a href="javascript:void(0)" class="text-white font-bold flex justify-end text-xl mb-5" onClick={funshowupdate}>
           <i class="fa-solid fa-xmark"></i>
         </a>
         <div class="flex flex-wrap -mx-3 mb-6 ">
@@ -111,7 +111,7 @@ const Addform = ({Addpop,showpop}) => {
         </div>
         <div class="p-2 w-full">
           <a class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer">
-            Add
+            Update
           </a>
         </div>
       </form>
@@ -119,4 +119,4 @@ const Addform = ({Addpop,showpop}) => {
   );
 };
 
-export default Addform;
+export default Updateform;
