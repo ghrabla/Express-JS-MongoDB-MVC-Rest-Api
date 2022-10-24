@@ -1,4 +1,17 @@
+import { useState,useEffect } from "react";
+
 const Addform = ({Addpop,showpop}) => {
+
+    const [city,setcity] = useState([]) 
+    useEffect(()=>{
+      const fetchcities = async () =>{
+        const res = await fetch('http://localhost:3000/city.json')
+        const data = await res.json()
+        setcity(data)
+      }
+      fetchcities();  
+    },[])
+
   return (
     <div className={Addpop ? "block" : "hidden"}>
       <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute ">
@@ -18,10 +31,9 @@ const Addform = ({Addpop,showpop}) => {
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
             <option selected disabled>Choose a country</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
+            {city.map((one) => (
+          <option value={one.ville}>{one.ville}</option>
+        ))}
           </select>
           </div>
           <div class="w-full md:w-1/2 px-3">
@@ -36,10 +48,9 @@ const Addform = ({Addpop,showpop}) => {
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
             <option selected disabled>Choose a country</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
+            {city.map((one) => (
+          <option value={one.ville}>{one.ville}</option>
+        ))}
           </select>
           </div>
         </div>
