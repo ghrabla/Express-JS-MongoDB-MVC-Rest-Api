@@ -5,6 +5,7 @@ const User = () => {
   return (
     <>
       <div>
+        <Sidebar/>
         <Statistic />
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
