@@ -3,6 +3,10 @@ import { useState,useEffect } from "react";
 const Addform = ({Addpop,showpop}) => {
 
     const [city,setcity] = useState([]) 
+    // const [date,setdate] = useState([]) 
+    const current = new Date();
+    const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+
     useEffect(()=>{
       const fetchcities = async () =>{
         const res = await fetch('http://localhost:3000/city.json')
@@ -62,7 +66,7 @@ const Addform = ({Addpop,showpop}) => {
             >
               Depart date
             </label>
-            <input type="date"
+            <input type="date" min={date}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -75,7 +79,7 @@ const Addform = ({Addpop,showpop}) => {
             >
               Arrive date
             </label>
-            <input type="date"
+            <input type="date" min={date}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
