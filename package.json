@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "koulchi": "start client"
   },
   "keywords": [],
   "author": "",
