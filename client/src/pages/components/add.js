@@ -1,6 +1,49 @@
-import { useState,useEffect } from "react";
+import React, { useState,useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { createTrip } from "../../actions/trips";
 
 const Addform = ({Addpop,showpop}) => {
+
+  const initialtripState = {
+    id: null,
+    title: "",
+    description: "",
+    published: false
+  };
+  const [trip, settrip] = useState(initialtripState);
+  const [submitted, setSubmitted] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    settrip({ ...trip, [name]: value });
+  };
+
+  const savetrip = () => {
+    const { title, description } = trip;
+
+    dispatch(createTrip(title, description))
+      .then(data => {
+        settrip({
+          id: data.id,
+          title: data.title,
+          description: data.description,
+          published: data.published
+        });
+        setSubmitted(true);
+
+        console.log(data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const newtrip = () => {
+    settrip(initialtripState);
+    setSubmitted(false);
+  };
 
     const [city,setcity] = useState([]) 
     // const [date,setdate] = useState([]) 
