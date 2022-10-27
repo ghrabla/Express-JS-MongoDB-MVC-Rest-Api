@@ -1,14 +1,16 @@
 import React, { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createTrip } from "../../actions/trips";
+import axios from "axios";
 
 const Addform = ({Addpop,showpop}) => {
-
   const initialtripState = {
-    id: null,
-    title: "",
-    description: "",
-    published: false
+    depart_city: "",
+    arrive_city: "",
+    depart_date: "",
+    arrive_date: "",
+    price: "",
+    id_bus: ""
   };
   const [trip, settrip] = useState(initialtripState);
   const [submitted, setSubmitted] = useState(false);
@@ -21,15 +23,17 @@ const Addform = ({Addpop,showpop}) => {
   };
 
   const savetrip = () => {
-    const { title, description } = trip;
+    const { depart_city,arrive_city,depart_date,arrive_date,price,id_bus } = trip;
 
-    dispatch(createTrip(title, description))
+    dispatch(createTrip(depart_city, arrive_city, depart_date,arrive_date,price,id_bus))
       .then(data => {
         settrip({
-          id: data.id,
-          title: data.title,
-          description: data.description,
-          published: data.published
+          depart_city: data.depart_city,
+          arrive_city: data.arrive_city,
+          depart_date: data.depart_date,
+          arrive_date: data.arrive_date,
+          price: data.price,
+          id_bus: data.id_bus
         });
         setSubmitted(true);
 
@@ -46,7 +50,7 @@ const Addform = ({Addpop,showpop}) => {
   };
 
     const [city,setcity] = useState([]) 
-    // const [date,setdate] = useState([]) 
+    const [bus,setbus] = useState([]) 
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
 
@@ -57,6 +61,12 @@ const Addform = ({Addpop,showpop}) => {
         setcity(data)
       }
       fetchcities();  
+      const fetchbus = async () =>{
+        const res = await axios.get('http://localhost:8090/bus')
+        const bus = await res.data
+        setbus(bus)
+      }
+      fetchbus();  
     },[])
 
   return (
@@ -74,12 +84,13 @@ const Addform = ({Addpop,showpop}) => {
               Depart city
             </label>
             <select
+            
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
             <option selected disabled>Choose a city</option>
             {city.map((one) => (
-          <option value={one.ville}>{one.ville}</option>
+          <option value={one.ville} name="depart_city">{one.ville}</option>
         ))}
           </select>
           </div>
@@ -91,12 +102,13 @@ const Addform = ({Addpop,showpop}) => {
               Arrive city
             </label>
             <select
+            
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
             <option selected disabled>Choose a city</option>
             {city.map((one) => (
-          <option value={one.ville}>{one.ville}</option>
+          <option value={one.ville} name="arrive_city">{one.ville}</option>
         ))}
           </select>
           </div>
@@ -109,7 +121,7 @@ const Addform = ({Addpop,showpop}) => {
             >
               Depart date
             </label>
-            <input type="date" min={date}
+            <input type="date" min={date}  onChange={handleInputChange} value={trip.depart_date} name="depart_date"
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -122,7 +134,7 @@ const Addform = ({Addpop,showpop}) => {
             >
               Arrive date
             </label>
-            <input type="date" min={date}
+            <input type="date" min={date}  onChange={handleInputChange} value={trip.arrive_date} name="arrive_date"
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -136,28 +148,35 @@ const Addform = ({Addpop,showpop}) => {
             >
               Price
             </label>
-            <input
+            <input  onChange={handleInputChange} value={trip.price} name="price"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
               type="text"
             />
           </div>
           <div class="w-full px-3 my-6 md:mb-0">
+          {/* <div class="w-full md:w-1/2 px-3"> */}
             <label
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="grid-city"
+              for="grid-last-name"
             >
-              Bus name
+              Arrive city
             </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
-              type="text"
-            />
+            <select
+            
+            id="large"
+            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          >
+            <option selected disabled>Choose a bus</option>
+            {bus.map((ones) => (
+          <option value={ones._id} name="arrive_city">{ones.name}</option> 
+        ))}
+          </select>
+          {/* </div> */} 
           </div>
         </div>
         <div class="p-2 w-full">
-          <a class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer">
+          <a class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer" onClick={savetrip}>
             Add
           </a>
         </div>

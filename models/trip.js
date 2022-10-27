@@ -22,7 +22,7 @@ const tripSchema = Schema(
         required: true,
       },
     price: {
-        type: Schema.Types.Decimal128,
+        type: Number,
         required: true,
       },
     id_bus: {
