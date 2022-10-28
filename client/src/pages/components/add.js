@@ -5,12 +5,12 @@ import axios from "axios";
 
 const Addform = ({Addpop,showpop}) => {
   const initialtripState = {
-    depart_city: "",
-    arrive_city: "",
-    depart_date: "",
-    arrive_date: "",
-    price: "",
-    id_bus: ""
+    depart_city: "tata",
+    arrive_city: "saouira",
+    depart_date: "2022-12-08",
+    arrive_date: "2022-12-09", 
+    price: 23,
+    id_bus: "634d147beb03ec0173f7674f"
   };
   const [trip, settrip] = useState(initialtripState);
   const [submitted, setSubmitted] = useState(false);
@@ -102,7 +102,7 @@ const Addform = ({Addpop,showpop}) => {
               Arrive city
             </label>
             <select
-            
+            name="arrive_city"
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
