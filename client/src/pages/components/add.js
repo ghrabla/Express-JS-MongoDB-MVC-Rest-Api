@@ -10,7 +10,7 @@ const Addform = ({Addpop,showpop}) => {
     depart_date: "2022-12-08",
     arrive_date: "2022-12-09", 
     price: 23,
-    id_bus: "634d147beb03ec0173f7674f"
+    id_bus: "634d147beb03ec0173f7674f" 
   };
   const [trip, settrip] = useState(initialtripState);
   const [submitted, setSubmitted] = useState(false);
