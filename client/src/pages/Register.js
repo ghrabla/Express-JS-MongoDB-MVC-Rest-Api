@@ -29,9 +29,9 @@ const Register = () =>{
           toast.error(message)
         }
     
-        if (isSuccess || user) {
-          navigate('/')
-        }
+        // if (isSuccess || user) {
+        //   navigate('/')
+        // }
     
         dispatch(reset())
       }, [user, isError, isSuccess, message, navigate, dispatch])
