@@ -1,9 +1,24 @@
 // import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, reset } from '../features/auth/authSlice'
 
 
-const navbar = () => {
+
+const Navbar = () => {
+   
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
+
+
     return(
     <>
      <div className="bg-cyan-600 p-5 flex justify-around">
@@ -20,13 +35,18 @@ const navbar = () => {
      <Link path="/home" to="/" exact>
       <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
       </Link>
-      <Link path="/Login" to="/Login" exact>
-     <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-     </Link>
-     <Link path="/Register" to="/Register" exact>
-      <a href="#"><i class="fa-solid fa-registered"></i> Register</a>
-     </Link>
-      <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      {user ?(<a href="javascript:void(0)" onClick={onLogout}><i class="fa-solid fa-right-from-bracket"></i> Logout</a>):(
+         <>
+            <Link path="/Login" to="/Login" exact>
+          <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+          </Link>
+          <Link path="/Register" to="/Register" exact>
+           <a href="#"><i class="fa-solid fa-registered"></i> Register</a>
+          </Link>
+         </>
+      )}
+      
+      
        <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
       
      </div>
@@ -34,4 +54,4 @@ const navbar = () => {
     )
 }
 
-export default navbar
+export default Navbar

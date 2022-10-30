@@ -55,6 +55,7 @@ const Register = () =>{
             }
       
             dispatch(register(userData))
+            navigate('/')
           }
       }
       if (isLoading) {
