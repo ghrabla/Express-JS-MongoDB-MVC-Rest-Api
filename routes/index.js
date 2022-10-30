@@ -19,7 +19,7 @@ router.delete("/admin/:id", adminCtrl.apiDeleteadmin);
 // client routes
 router.get("/client", clientCtrl.apiGetAllclients);
 router.post("/client/login", clientCtrl.apiCheckclient);
-router.post("/client",clientCtrl.apiCreateclient);
+router.post("/client/register",clientCtrl.apiCreateclient);
 router.get("/client/:id", clientCtrl.apiGetclientById);
 router.put("/client/:id", clientCtrl.apiUpdateclient);
 router.delete("/client/:id", clientCtrl.apiDeleteclient); 
