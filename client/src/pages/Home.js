@@ -1,6 +1,6 @@
-import Header from "./components/header";
-import Offer from "./components/offer";
-import Service from "./components/service";
+import Header from "../components/header";
+import Offer from "../components/offer";
+import Service from "../components/service";
 
 const Home = () => {
     return(

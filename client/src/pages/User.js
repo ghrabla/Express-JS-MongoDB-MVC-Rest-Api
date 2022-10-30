@@ -1,5 +1,5 @@
-import Sidebar from "./components/sidebar";
-import Statistic from "./components/statistic";
+import Sidebar from "../components/sidebar";
+import Statistic from "../components/statistic";
 
 const User = () => {
   return (

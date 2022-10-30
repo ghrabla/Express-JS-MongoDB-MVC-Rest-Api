@@ -1,7 +1,7 @@
-import Sidebar from "./components/sidebar";
-import Statistic from "./components/statistic";
-import Addform from "./components/add";
-import Updateform from "./components/update";
+import Sidebar from "../components/sidebar";
+import Statistic from "../components/statistic";
+import Addform from "../components/add";
+import Updateform from "../components/update";
 import { useState } from "react";
 
 const Trip = () => {
