@@ -1,6 +1,28 @@
+import { useState,useEffect } from "react"
+
 const Register = () =>{
+    
+    const [formData, setFormData] = useState({
+        fullname: '',
+        email: '',
+        password: ''
+      })
+    
+      const { fullname, email, password } = formData
+
+      const onChange = (e) => {
+        setFormData((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }))
+      }
+
+      const onSubmit = (e) =>{
+          e.preventDefault()
+      }
+
     return(
-        <>
+        <form onSubmit={onSubmit}>
            <div className="m-8 bg-gray"> 
         <div className="lg:flex flex-row-reverse">
             <div className="lg:w-1/2 xl:max-w-screen-sm">
@@ -11,12 +33,22 @@ const Register = () =>{
                         
                             <div>
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Fullname</div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Adnane elgotabi" v-model="form.name" />
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="text" placeholder="Adnane elgotabi" 
+                                id='fullname'
+                                name='fullname'
+                                value={fullname}
+                                onChange={onChange}
+                                />
                                
                             </div>
                             <div className="mt-8">
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Email </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="adnanelgotabi@gmail.com"  />
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="email" placeholder="adnanelgotabi@gmail.com"  
+                                 id='email'
+                                 name='email'
+                                 value={email}
+                                 onChange={onChange}
+                                />
                               
                             </div>
                             <div className="mt-8">
@@ -26,13 +58,18 @@ const Register = () =>{
                                     </div>
                                     
                                 </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Enter your password"  />
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password"  
+                                   id='password'
+                                   name='password'
+                                   value={password}
+                                   onChange={onChange}
+                                />
                                
                             </div>
                             <div className="mt-10">
                                 <button className="bg-cyan-600 text-gray-100 p-4 w-full rounded tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-cyan-600
-                                shadow-lg" >
+                                shadow-lg" type="submit">
                                     Register
                                 </button>
                             </div>
@@ -50,7 +87,7 @@ const Register = () =>{
             </div>
         </div>
     </div>
-        </>
+   </form>
     )
 }
 
