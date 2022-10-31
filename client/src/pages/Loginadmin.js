@@ -1,5 +1,62 @@
+import { useState,useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { login, reset } from '../features/authAdmin/authSlice'
+import { toast } from 'react-toastify'
+import Spinner from '../components/Spinner'
 
-const login = () => {
+const Login = () => {
+     
+    const [formData, setFormData] = useState({
+      
+        email: '',
+        password: ''
+      })
+    
+      const { email, password } = formData
+
+      
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { admin, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || admin) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [admin, isError, isSuccess, message, navigate, dispatch])
+
+      const onChange = (e) => {
+        setFormData((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }))
+      }
+
+      const onSubmit = (e) =>{
+          e.preventDefault()
+
+          const adminData = {
+            email,
+            password,
+          }
+      
+          dispatch(login(adminData))
+      }
+
+      if (isLoading) {
+        return <Spinner />
+      }
+
     return(
         <>
           <div>
@@ -8,12 +65,17 @@ const login = () => {
             <div className="lg:w-1/2 xl:max-w-screen-sm">
                 <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
                     <h2 className="text-center text-4xl text-black font-display font-semibold lg:text-left xl:text-5xl
-                    xl:text-bold">Login Admin</h2>
+                    xl:text-bold">Login</h2>
                     <div className="mt-12">
-                        <form>
+                        <form onSubmit={onSubmit}>
                             <div>
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Email </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="adnanelgotabi@gmail.com" />
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="email" placeholder="adnanelgotabi@gmail.com" 
+                                   id='email'
+                                   name='email'
+                                   value={email}
+                                   onChange={onChange}
+                                />
                                 <p className=" text-red-500 text-xs text-center" >
                                        
                                 </p>
@@ -30,7 +92,12 @@ const login = () => {
                                         </a>
                                     </div> 
                                 </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Enter your password" />
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password" 
+                                   id='password'
+                                   name='password'
+                                   value={password}
+                                   onChange={onChange}
+                                />
                                 <p className=" text-red-500 text-xs text-center" >
                                      
                                 </p>
@@ -43,7 +110,9 @@ const login = () => {
                                 </button>
                             </div>
                         </form>
-                        
+                        <div className="mt-12 text-sm font-display font-semibold text-cyan-600 text-center">
+                            you don't have an account ?  <a className="cursor-pointer text-black hover:text-indigo-800">Register</a> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,4 +159,4 @@ const login = () => {
     )
 }
 
-export default login;
+export default Login;
