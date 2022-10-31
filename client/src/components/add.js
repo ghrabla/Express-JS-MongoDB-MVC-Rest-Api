@@ -83,6 +83,7 @@ const Addform = ({ Addpop, showpop }) => {
               Depart city
             </label>
             <select
+              name="depart_city"
               id="large"
               onChange={onChange}
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -180,6 +181,7 @@ const Addform = ({ Addpop, showpop }) => {
               Arrive city
             </label>
             <select
+              name="id_bus"
               id="large"
               onChange={onChange}
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -188,7 +190,7 @@ const Addform = ({ Addpop, showpop }) => {
                 Choose a bus
               </option>
               {bus.map((ones) => (
-                <option value={ones._id} name="arrive_city">
+                <option value={ones._id} name="id_bus">
                   {ones.name}
                 </option>
               ))}
