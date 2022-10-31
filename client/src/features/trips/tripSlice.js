@@ -14,8 +14,8 @@ export const createtrip = createAsyncThunk(
   'trips/create',
   async (tripData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token
-      return await tripService.createtrip(tripData, token)
+      // const token = thunkAPI.getState().auth.user.token
+      return await tripService.createtrip(tripData)
     } catch (error) {
       const message =
         (error.response &&
