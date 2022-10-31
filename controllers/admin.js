@@ -30,7 +30,7 @@ module.exports = class admin {
       const admin = await adminService.adminlogin(req.body);
       const validPassword = await bcrypt.compare(req.body.password, admin[0].password);
       if (validPassword) {
-        res.status(200).json({ message: "Valid password" });
+        res.status(200).json(admin[0]);
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
