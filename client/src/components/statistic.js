@@ -1,6 +1,8 @@
-const statistic = () =>{
+import Profile from "./profile";
+const Statistic = () =>{
     return(
         <>
+           <Profile/>
            <div className="">
         <div className="flex justify-around lg:flex-row flex-col">
             <div className="flex mt-10 px-7 py-5 rounded lg:mx-0 mx-10 lg:w-1/5 shadow-2xl" id="box-sta">
@@ -45,4 +47,4 @@ const statistic = () =>{
     )
 }
 
-export default statistic;
+export default Statistic;
