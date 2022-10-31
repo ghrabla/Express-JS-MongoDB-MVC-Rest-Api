@@ -1,18 +1,23 @@
-import React, { useState,useEffect } from "react";
-import axios from "axios";
+import { useState,useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { createtrip } from '../features/trips/tripSlice'
+import axios from 'axios';
 
 const Addform = ({Addpop,showpop}) => {
 
-
-
-  
-
- 
-
+    const dispatch = useDispatch()
+    const [text, setText] = useState('')
     const [city,setcity] = useState([]) 
     const [bus,setbus] = useState([]) 
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+
+    const onSubmit = (e) => {
+      e.preventDefault()
+  
+      dispatch(createtrip({ text }))
+      setText('')
+    }
 
     useEffect(()=>{
       const fetchcities = async () =>{
@@ -31,7 +36,7 @@ const Addform = ({Addpop,showpop}) => {
 
   return (
     <div className={Addpop ? "block" : "hidden"}>
-      <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute ">
+      <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute " onSubmit={onSubmit}>
         <a href="javascript:void(0)" class="text-white font-bold flex justify-end text-xl mb-5" onClick={showpop}>
           <i class="fa-solid fa-xmark"></i>
         </a>
@@ -136,9 +141,9 @@ const Addform = ({Addpop,showpop}) => {
           </div>
         </div>
         <div class="p-2 w-full">
-          <a class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer" >
+          <button class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer" type='submit'>
             Add
-          </a>
+          </button>
         </div>
       </form>
     </div>
