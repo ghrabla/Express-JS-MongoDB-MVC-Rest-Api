@@ -30,7 +30,7 @@ module.exports = class client {
       const client = await clientService.clientlogin(req.body);
       const validPassword = await bcrypt.compare(req.body.password, client[0].password);
       if (validPassword) {
-        res.status(200).json({ message: "Valid password" });
+        res.status(200).json( client[0] );
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
