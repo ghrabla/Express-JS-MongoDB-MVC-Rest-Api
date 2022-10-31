@@ -20,7 +20,7 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
+    (state) => state.authAdmin
   )
 
   useEffect(() => {
@@ -28,8 +28,8 @@ const Login = () => {
       toast.error(message)
     }
 
-    if (isSuccess || admin) {
-      navigate('/')
+    if (admin) {
+      navigate('/Trip')
     }
 
     dispatch(reset())
@@ -65,7 +65,7 @@ const Login = () => {
             <div className="lg:w-1/2 xl:max-w-screen-sm">
                 <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
                     <h2 className="text-center text-4xl text-black font-display font-semibold lg:text-left xl:text-5xl
-                    xl:text-bold">Login</h2>
+                    xl:text-bold">Login Admin</h2>
                     <div className="mt-12">
                         <form onSubmit={onSubmit}>
                             <div>
@@ -110,16 +110,14 @@ const Login = () => {
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-12 text-sm font-display font-semibold text-cyan-600 text-center">
-                            you don't have an account ?  <a className="cursor-pointer text-black hover:text-indigo-800">Register</a> 
-                        </div>
+                       
                     </div>
                 </div>
             </div>
             <div className="hidden lg:flex items-center justify-center bg-gray-200 rounded flex-1 h-screen">
                 <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
                     <svg className="w-5/6 mx-auto" xmlns="http://www.w3.org/2000/svg" id="f080dbb7-9b2b-439b-a118-60b91c514f72" data-name="Layer 1" viewBox="0 0 528.71721 699.76785">
-                        <title>Login</title>
+                        <title>Login Admin</title>
                         <rect y="17.06342" width="444" height="657" fill="#535461"/>
                         <polygon points="323 691.063 0 674.063 0 17.063 323 0.063 323 691.063" fill="#7f9cf5"/>
                         <circle cx="296" cy="377.06342" r="4" fill="#535461"/>

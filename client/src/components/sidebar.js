@@ -1,9 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, reset } from '../features/authAdmin/authSlice'
 
 
 
 const Sidebar = () =>{
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { admin } = useSelector((state) => state.authAdmin)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
    
 	const [isActive, setActive] = useState(false);
 
@@ -46,7 +58,7 @@ const Sidebar = () =>{
 							<i className="fa fa-bell" aria-hidden="true"></i> Reserved
 						</Link>
 						</a>
-                        <a href="javascript:void(0)" className="font-bold text-xl my-5 " >
+                        <a href="javascript:void(0)" className="font-bold text-xl my-5 " onClick={onLogout}>
 							<i className="fa fa-sign-out" aria-hidden="true"></i> Logout
 						</a> 
 					</div>

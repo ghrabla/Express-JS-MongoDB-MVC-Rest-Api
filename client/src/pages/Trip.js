@@ -2,9 +2,33 @@ import Sidebar from "../components/sidebar";
 import Statistic from "../components/statistic";
 import Addform from "../components/add";
 import Updateform from "../components/update";
-import { useState } from "react";
+import { useState,useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { reset } from '../features/authAdmin/authSlice'
+import { toast } from 'react-toastify'
+
 
 const Trip = () => {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { admin, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.authAdmin
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (!admin) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [admin, isError, isSuccess, message, navigate, dispatch])
   
   const [Addpop,setAddpop] = useState(false);
   const [action,setaction] = useState(false);
