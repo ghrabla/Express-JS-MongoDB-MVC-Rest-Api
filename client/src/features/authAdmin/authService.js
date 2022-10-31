@@ -2,31 +2,31 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:8090/admin/'
 
-// Register user
-const register = async (userData) => {
-  const response = await axios.post(API_URL+'register', userData)
+// Register admin
+const register = async (adminData) => {
+  const response = await axios.post(API_URL+'register', adminData)
 
   if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
+    localStorage.setItem('admin', JSON.stringify(response.data))
   }
 
   return response.data
 }
 
-// Login user
-const login = async (userData) => {
-  const response = await axios.post(API_URL +'login', userData)
+// Login admin
+const login = async (adminData) => {
+  const response = await axios.post(API_URL +'login', adminData)
 
   if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
+    localStorage.setItem('admin', JSON.stringify(response.data))
   }
 
   return response.data
 }
 
-// Logout user
+// Logout admin
 const logout = () => {
-  localStorage.removeItem('user')
+  localStorage.removeItem('admin')
 }
 
 const authService = {
