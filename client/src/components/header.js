@@ -1,8 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
 
-
-
 const Header = () => {
   const [city,setcity] = useState([]) 
       useEffect(()=>{
