@@ -20,9 +20,7 @@ const Addform = ({ Addpop, showpop }) => {
   const [city, setcity] = useState([]);
   const [bus, setbus] = useState([]);
   const current = new Date();
-  const date = `${current.getFullYear()}-${
-    current.getMonth() + 1
-  }-${current.getDate()}`;
+  const date = `${current.getFullYear()}-${current.getMonth() + 1}-0${current.getDate()}`;
 
   const onChange = (e) => {
     setFormData((prevState) => ({

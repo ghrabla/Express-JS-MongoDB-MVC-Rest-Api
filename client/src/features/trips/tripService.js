@@ -4,10 +4,7 @@ const API_URL = 'http://localhost:8090/'
 
 // Create new trip
 const createtrip = async (tripData) => {
-  
-
   const response = await axios.post(API_URL+'trip', tripData)
-
   return response.data
 }
 
@@ -18,9 +15,7 @@ const gettrips = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   }
-
   const response = await axios.get(API_URL, config)
-
   return response.data
 }
 
@@ -32,7 +27,7 @@ const deletetrip = async (tripId, token) => {
     },
   }
 
-  const response = await axios.delete(API_URL + tripId, config)
+  const response = await axios.delete(API_URL + tripId)
 
   return response.data
 }

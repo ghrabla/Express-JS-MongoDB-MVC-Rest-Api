@@ -1,10 +1,10 @@
 import Sidebar from "../components/sidebar";
 import Statistic from "../components/statistic";
-import { useState,useEffect } from "react"
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { reset } from '../features/authAdmin/authSlice'
-import { toast } from 'react-toastify'
+import { useState,useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { reset } from '../features/authAdmin/authSlice';
+import { toast } from 'react-toastify';
 
 const Bus = () => {
 
