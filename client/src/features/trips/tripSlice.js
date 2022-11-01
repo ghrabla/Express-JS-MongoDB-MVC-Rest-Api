@@ -33,8 +33,8 @@ export const gettrips = createAsyncThunk(
   'trips/getAll',
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token
-      return await tripService.gettrips(token)
+      // const token = thunkAPI.getState().auth.user.token
+      return await tripService.gettrips()
     } catch (error) {
       const message =
         (error.response &&

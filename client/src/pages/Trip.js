@@ -7,16 +7,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { reset } from '../features/authAdmin/authSlice'
 import { toast } from 'react-toastify'
+import { gettrips } from "../features/trips/tripSlice";
 
 
 const Trip = () => {
 
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() 
 
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.authAdmin
+    (state) => state.authAdmin 
   )
+
+  const { trips } = useSelector((state) => state.trips)
+  
 
   useEffect(() => {
     if (isError) {
@@ -28,6 +32,12 @@ const Trip = () => {
     }
 
     dispatch(reset())
+
+    dispatch(gettrips())
+
+    return () => {
+      dispatch(reset())
+    }
   }, [admin, isError, isSuccess, message, navigate, dispatch])
   
   const [Addpop,setAddpop] = useState(false);

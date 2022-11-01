@@ -15,7 +15,7 @@ const gettrips = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   }
-  const response = await axios.get(API_URL, config)
+  const response = await axios.get(API_URL+'trip')
   return response.data
 }
 
