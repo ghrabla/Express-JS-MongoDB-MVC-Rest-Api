@@ -5,7 +5,7 @@ const Updateform = ({showupdate,funshowupdate}) => {
     const [city,setcity] = useState([]) 
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-    console.log(date)
+    // console.log(date)
     useEffect(()=>{
       const fetchcities = async () =>{
         const res = await fetch('http://localhost:3000/city.json')

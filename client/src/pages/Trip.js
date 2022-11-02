@@ -2,39 +2,32 @@ import Sidebar from "../components/sidebar";
 import Statistic from "../components/statistic";
 import Addform from "../components/add";
 import Updateform from "../components/update";
-import { useState,useEffect } from "react"
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { reset } from '../features/authAdmin/authSlice'
-import { toast } from 'react-toastify'
+import { useState,useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { reset } from '../features/authAdmin/authSlice';
+import { toast } from 'react-toastify';
 import { gettrips } from "../features/trips/tripSlice";
 
-
 const Trip = () => {
-
   const navigate = useNavigate()
   const dispatch = useDispatch() 
-
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin 
-  )
-
-  const { trips } = useSelector((state) => state.trips)
-  
-
+    )
+    const { trips } = useSelector((state) => state.trips)
+    
   useEffect(() => {
+
+    // console.log(trips.length) 
     if (isError) {
       toast.error(message)
     }
-
     if (!admin) {
       navigate('/')
     }
-
     dispatch(reset())
-
     dispatch(gettrips())
-
     return () => {
       dispatch(reset())
     }
@@ -43,6 +36,8 @@ const Trip = () => {
   const [Addpop,setAddpop] = useState(false);
   const [action,setaction] = useState(false);
   const [showupdate,setshowupdate] = useState(false);
+  
+ 
 
   const showpop = () =>{
      setAddpop(!Addpop)
@@ -60,7 +55,7 @@ const Trip = () => {
         <Sidebar/>
         <Addform Addpop={Addpop} showpop={showpop}/>
         <Updateform showupdate={showupdate} funshowupdate={funshowupdate}/>
-        <Statistic/>
+        <Statistic />
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
             <div>

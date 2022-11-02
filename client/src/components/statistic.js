@@ -1,5 +1,11 @@
 import Profile from "./profile";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 const Statistic = () =>{
+  
+  const trips = useSelector((state) => state.trips) 
+    // console.log()
+
     return(
         <>
            <Profile/>
@@ -29,7 +35,7 @@ const Statistic = () =>{
                 </div>
                 <div className="ml-4">
                   <span className="font-bold ">total trips</span> 
-                  <p className="font-bold text-xl">27</p>
+                  <p className="font-bold text-xl">{trips.trips.length}</p>
                 </div>
             </div>
             <div className="flex mt-10 px-7 py-5 rounded lg:mx-0 mx-10 lg:w-1/5 shadow-2xl" id="box-sta">
