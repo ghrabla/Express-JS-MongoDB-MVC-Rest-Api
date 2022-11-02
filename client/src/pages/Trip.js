@@ -72,7 +72,6 @@ const Trip = () => {
             </div>
             <div>
              <div>
-               {trips.map((one)=>(
                   <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                   <div class="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
                     <table class="min-w-full leading-normal">
@@ -93,28 +92,29 @@ const Trip = () => {
                           <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                         </tr>
                       </thead>
+               {trips.map((one)=>(
                       <tbody>
                         <tr v-for="product in products">
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <div class="flex">
                               <div class="ml-3">
-                                <p class="text-red-900 whitespace-no-wrap ">Safi</p>
+                                <p class="text-red-900 whitespace-no-wrap ">{one.depart_city}</p>
                                 <p class="text-green-700 whitespace-no-wrap font-bold">
-                                  Rabat
+                                {one.arrive_city}
                                 </p>
                               </div>
                             </div>
                           </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p class="text-gray-900 whitespace-no-wrap">55.00</p>
+                            <p class="text-gray-900 whitespace-no-wrap">{one.price}</p>
                             <p class="text-gray-600 whitespace-no-wrap">DH</p>
                           </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-red-900 whitespace-no-wrap">
-                              09/12/2022
+                            {one.depart_date}
                             </p>
                             <p class="text-green-600 whitespace-no-wrap font-bold">
-                              11/12/2022
+                            {one.arrive_date}
                             </p>
                           </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -153,10 +153,10 @@ const Trip = () => {
                   </div>
                         </tr>
                       </tbody>
+                    ))}
                     </table>
                   </div>
                 </div>
-               ))}
              </div>
             </div>
           </div>
