@@ -1,6 +1,5 @@
 import Profile from "./profile";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 const Statistic = () =>{
   
   const trips = useSelector((state) => state.trips) 

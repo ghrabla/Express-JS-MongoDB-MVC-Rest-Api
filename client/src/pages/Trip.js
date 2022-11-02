@@ -42,8 +42,8 @@ const Trip = () => {
   const showpop = () =>{
      setAddpop(!Addpop)
   }
-  const showaction = () =>{
-     setaction(!action)
+  const showaction = (num) =>{
+     setaction(num)
   }
   const funshowupdate = () =>{
     setshowupdate(!showupdate)
@@ -122,9 +122,9 @@ const Trip = () => {
                             </span>
                           </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
-                            <div className={action ? "hidden" : "block"}>
+                            <div className={action===one ? "hidden" : "block"}>
                             <button
-                              onClick={showaction}
+                              onClick={() => showaction(one)}
                               type="button"
                               class="inline-block text-gray-500 hover:text-gray-700"
                             >
@@ -136,11 +136,11 @@ const Trip = () => {
                               </svg>
                             </button>
                             </div>
-                            <div className={action ? "block" : "hidden"}>
+                            <div className={action===one ? "block" : "hidden"}>
                             <button onClick={showaction} class="font-bold text-xl" ><i class="fa-solid fa-xmark"></i></button>
                             </div>
                           </td>
-                          <div className={action ? "block" : "hidden"}>
+                          <div className={action===one ? "block" : "hidden"}>
                           <div class="flex flex-col gap-3" >
                       <button  class="text-green-500 font-bold" onClick={funshowupdate}><i class="fas fa-edit" ></i>Update</button>
                       <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
