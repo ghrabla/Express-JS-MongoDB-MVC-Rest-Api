@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { reset } from '../features/authAdmin/authSlice';
 import { toast } from 'react-toastify';
 import { gettrips,deletetrip } from "../features/trips/tripSlice";
+import Swal from 'sweetalert2'
+
 
 
 
@@ -37,7 +39,7 @@ const Trip = () => {
   
   const [Addpop,setAddpop] = useState(false);
   const [action,setaction] = useState(false);
-  const [showupdate,setshowupdate] = useState(false);
+  const [showupdate,setshowupdate] = useState(false); 
   
  
 
@@ -51,9 +53,20 @@ const Trip = () => {
     setshowupdate(!showupdate)
   }
   const Deleteone = (id) =>{
-    dispatch(deletetrip(id))
-    
-
+    Swal.fire({
+      title: "Are you sure ?",
+      text: "You are going to delete this trip",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "black", 
+      cancelButtonColor: "#d33", 
+      confirmButtonText: "Yes",
+      cancelButtonText: "Cancel",
+    }).then((result)=>{
+      if(result.value){
+        dispatch(deletetrip(id))
+    }
+    })
   }
 
   return (

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createtrip } from "../features/trips/tripSlice";
 import axios from "axios";
+import Swal from 'sweetalert2'
+
 
 const Addform = ({ Addpop, showpop }) => {
   const [formData, setFormData] = useState({
@@ -40,7 +42,15 @@ const Addform = ({ Addpop, showpop }) => {
       price,
       id_bus,
     };
-    dispatch(createtrip(tripData));
+    if(tripData.depart_city!='' && tripData.arrive_city!='' && tripData.depart_date!='' && tripData.arrive_date!='' && tripData.price!='' && tripData.id_bus!=''){
+
+      dispatch(createtrip(tripData));
+    }else{
+      Swal.fire({
+        title : 'please fill all the feilds !',
+        type : 'warning'
+    })
+    }
     // setText("");
   };
 

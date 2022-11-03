@@ -13,7 +13,7 @@ const initialState = {
 export const createtrip = createAsyncThunk(
   'trips/create',
   async (tripData, thunkAPI) => {
-    try {
+    try { 
       // const token = thunkAPI.getState().auth.user.token
       return await tripService.createtrip(tripData)
     } catch (error) {
@@ -50,10 +50,14 @@ export const gettrips = createAsyncThunk(
 // Delete user trip
 export const deletetrip = createAsyncThunk(
   'trips/delete',
-  async (id) => {
+  async (id,{ dispatch, getState }) => {
     try {
       // const token = thunkAPI.getState().auth.user.token
-      return await tripService.deletetrip(id)
+     
+    const res = await tripService.deletetrip(id)
+    dispatch(gettrips());
+    return res;
+  
     } catch (error) {
       const message =
         (error.response &&

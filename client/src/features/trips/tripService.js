@@ -5,8 +5,13 @@ const API_URL = 'http://localhost:8090/'
 
 // Create new trip
 const createtrip = async (tripData) => {
+ if(tripData){
   const response = await axios.post(API_URL+'trip', tripData)
+  Swal.fire('Saved!', '', 'success')
   return response.data
+ }else{
+  Swal.fire( 'please fill all feilds !', 'warning')
+ }
 }
 
 // Get user trips
@@ -27,20 +32,9 @@ const deletetrip = async (tripId) => {
   //     Authorization: `Bearer ${token}`,
   //   },
   // }
-  Swal.fire({
-    title: "Are you sure ?",
-    text: "You are going to delete this trip",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "black",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes",
-    cancelButtonText: "Cancel",
-  }).then((result)=>{
-    if(result.value){
+  
       axios.delete(API_URL+'trip/'+tripId)
-    }
-  })
+    
   
 }
 
