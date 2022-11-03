@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+// import res from 'express/lib/response'
 import tripService from './tripService'
 
 const initialState = {
@@ -12,10 +13,12 @@ const initialState = {
 // Create new trip
 export const createtrip = createAsyncThunk(
   'trips/create',
-  async (tripData, thunkAPI) => {
+  async (tripData,{ dispatch, getState }) => {
     try { 
       // const token = thunkAPI.getState().auth.user.token
-      return await tripService.createtrip(tripData)
+      const res = await tripService.createtrip(tripData)
+      dispatch(gettrips())
+      return res;
     } catch (error) {
       const message =
         (error.response &&
@@ -23,7 +26,7 @@ export const createtrip = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-      return thunkAPI.rejectWithValue(message)
+      // return thunkAPI.rejectWithValue(message)
     }
   }
 )
