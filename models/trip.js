@@ -25,10 +25,11 @@ const tripSchema = Schema(
         type: Number,
         required: true,
       },
-    id_bus: {
-        type: Schema.Types.ObjectId,
-        required: true,
-      },
+    id_bus: [{
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref:'bus'
+    }],
   },
   { timestamps: true }
 );

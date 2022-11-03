@@ -7,11 +7,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reset } from '../features/authAdmin/authSlice';
 import { toast } from 'react-toastify';
-import { gettrips } from "../features/trips/tripSlice";
+import { gettrips,deletetrip } from "../features/trips/tripSlice";
+
+
 
 const Trip = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()  
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin 
     )
@@ -19,7 +21,7 @@ const Trip = () => {
     
   useEffect(() => {
 
-    // console.log(trips.length) 
+    // console.log(trips.length)  
     if (isError) {
       toast.error(message)
     }
@@ -30,7 +32,7 @@ const Trip = () => {
     dispatch(gettrips())
     return () => {
       dispatch(reset())
-    }
+    } 
   }, [admin, isError, isSuccess, message, navigate, dispatch])
   
   const [Addpop,setAddpop] = useState(false);
@@ -47,6 +49,11 @@ const Trip = () => {
   }
   const funshowupdate = () =>{
     setshowupdate(!showupdate)
+  }
+  const Deleteone = (id) =>{
+    dispatch(deletetrip(id))
+    
+
   }
 
   return (
@@ -87,7 +94,7 @@ const Trip = () => {
                           <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                         </tr>
                       </thead>
-               {trips.map((one)=>(
+                      {trips.map((one)=>(
                       <tbody>
                         <tr v-for="product in products">
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -118,7 +125,7 @@ const Trip = () => {
                                 aria-hidden
                                 class="absolute inset-0 opacity-50 rounded-full"
                               ></span>
-                              <span class="relative">ACHKID</span>
+                              <span class="relative">{one.id_bus[0].name}</span>
                             </span>
                           </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
@@ -143,7 +150,7 @@ const Trip = () => {
                           <div className={action===one ? "block" : "hidden"}>
                           <div class="flex flex-col gap-3" >
                       <button  class="text-green-500 font-bold" onClick={funshowupdate}><i class="fas fa-edit" ></i>Update</button>
-                      <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
+                      <button class="text-red-500 font-bold" onClick={() => Deleteone(one._id)}><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
                   </div> 
                   </div>
                         </tr>

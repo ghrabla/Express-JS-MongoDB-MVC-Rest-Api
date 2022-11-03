@@ -50,10 +50,10 @@ export const gettrips = createAsyncThunk(
 // Delete user trip
 export const deletetrip = createAsyncThunk(
   'trips/delete',
-  async (id, thunkAPI) => {
+  async (id) => {
     try {
-      const token = thunkAPI.getState().auth.user.token
-      return await tripService.deletetrip(id, token)
+      // const token = thunkAPI.getState().auth.user.token
+      return await tripService.deletetrip(id)
     } catch (error) {
       const message =
         (error.response &&
@@ -61,7 +61,7 @@ export const deletetrip = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-      return thunkAPI.rejectWithValue(message)
+      // return rejectWithValue(message)
     }
   }
 )

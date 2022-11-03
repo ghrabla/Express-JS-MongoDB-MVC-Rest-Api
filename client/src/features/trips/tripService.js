@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const API_URL = 'http://localhost:8090/'
 
@@ -20,16 +21,27 @@ const gettrips = async (token) => {
 }
 
 // Delete user trip
-const deletetrip = async (tripId, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-
-  const response = await axios.delete(API_URL + tripId)
-
-  return response.data
+const deletetrip = async (tripId) => {
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // }
+  Swal.fire({
+    title: "Are you sure ?",
+    text: "You are going to delete this trip",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "black",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes",
+    cancelButtonText: "Cancel",
+  }).then((result)=>{
+    if(result.value){
+      axios.delete(API_URL+'trip/'+tripId)
+    }
+  })
+  
 }
 
 const tripService = {

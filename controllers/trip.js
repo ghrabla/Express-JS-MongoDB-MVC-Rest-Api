@@ -58,7 +58,7 @@ module.exports = class trip {
     try {
       const tripId = req.params.id;
       const deleteResponse = await tripService.deletetrip(tripId);
-      res.json(deleteResponse);
+      res.json({message:"trip deleted successfully"});
     } catch (error) {
       res.status(500).json({ error: error });
     }

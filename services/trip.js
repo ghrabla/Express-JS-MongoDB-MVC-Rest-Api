@@ -3,7 +3,8 @@ const trip = require("../models/trip");
 module.exports = class tripService{
     static async getAlltrips(){
         try {
-            const alltrips = await trip.find();
+            const alltrips = await trip.find().populate('id_bus');
+            // console.log(alltrips.id_bus)
             return alltrips;
         } catch (error) {
             console.log(`Could not fetch trips ${error}`)
