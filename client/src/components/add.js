@@ -42,8 +42,14 @@ const Addform = ({ Addpop, showpop }) => {
       id_bus,
     };
     if(tripData.depart_city!='' && tripData.arrive_city!='' && tripData.depart_date!='' && tripData.arrive_date!='' && tripData.price!='' && tripData.id_bus!=''){
-
-      dispatch(createtrip(tripData));
+       if(tripData.depart_city === tripData.arrive_city){
+        Swal.fire({
+          title : 'depart and arrive city are the same !',
+          type : 'warning'
+      })
+       }else{
+         dispatch(createtrip(tripData));
+       }
       // const resp = await dispatch(gettrips());
       // return resp;
 
