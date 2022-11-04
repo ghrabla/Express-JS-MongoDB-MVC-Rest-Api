@@ -13,12 +13,13 @@ module.exports = class tripService{
 
     static async createtrip(data){
         try {
-            
+            const ddate =  data.depart_date.replace('T',' ');
+            const adate =  data.depart_date.replace('T',' ');
             const newtrip = {
                 depart_city: data.depart_city,  
                 arrive_city: data.arrive_city,  
-                depart_date: data.depart_date,
-                arrive_date: data.arrive_date,
+                depart_date: ddate,
+                arrive_date: adate,
                 price: data.price,
                 id_bus: data.id_bus
 

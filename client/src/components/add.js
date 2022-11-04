@@ -147,7 +147,7 @@ const Addform = ({ Addpop, showpop }) => {
               Depart date
             </label>
             <input
-              type="date"
+              type="datetime-local"
               min={date}
               name="depart_date"
               id="large"
@@ -163,7 +163,7 @@ const Addform = ({ Addpop, showpop }) => {
               Arrive date
             </label>
             <input
-              type="date"
+              type="datetime-local"
               min={date}
               name="arrive_date"
               id="large"
