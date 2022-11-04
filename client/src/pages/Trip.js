@@ -5,9 +5,9 @@ import Updateform from "../components/update";
 import { useState,useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { reset } from '../features/authAdmin/authSlice';
+import { reset } from '../services/authAdmin/authSlice';
 import { toast } from 'react-toastify';
-import { gettrips,deletetrip } from "../features/trips/tripSlice";
+import { gettrips,deletetrip } from "../services/trips/tripSlice";
 import Swal from 'sweetalert2'
 
 

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer from '../features/auth/authSlice'
-import authAdminReducer from '../features/authAdmin/authSlice'
-import tripReducer from '../features/trips/tripSlice'
+import authReducer from '../services/auth/authSlice'
+import authAdminReducer from '../services/authAdmin/authSlice'
+import tripReducer from '../services/trips/tripSlice'
 
 export const store = configureStore({
   reducer: {

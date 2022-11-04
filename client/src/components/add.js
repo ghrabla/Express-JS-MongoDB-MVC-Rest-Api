@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createtrip,gettrips } from "../features/trips/tripSlice";
+import { createtrip,gettrips } from "../services/trips/tripSlice";
 import axios from "axios";
 import Swal from 'sweetalert2'
 
