@@ -22,7 +22,7 @@ const Addform = ({ Addpop, showpop }) => {
   const [city, setcity] = useState([]);
   const [bus, setbus] = useState([]);
   const current = new Date();
-  const date = `${current.getFullYear()}-${current.getMonth() + 1}-0${current.getDate()}`;
+  const date = `${current.getFullYear()}-${current.getMonth() + 1}-0${current.getDate()} ${current.getHours()}:${current.getMinutes()}`;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -30,7 +30,15 @@ const Addform = ({ Addpop, showpop }) => {
       [e.target.name]: e.target.value,
     }))
   }
-
+  
+  const checkdate = () =>{
+     if(formData.depart_date === ''){
+      Swal.fire({
+        title : 'enter depart date first',
+        type : 'warning'
+      })
+     }
+  }
   const onSubmit = async (e) => {
     e.preventDefault();
     const tripData = {
@@ -164,9 +172,10 @@ const Addform = ({ Addpop, showpop }) => {
             </label>
             <input
               type="datetime-local"
-              min={date}
+              min={formData.depart_date} 
               name="arrive_date"
               id="large"
+              onClick={checkdate}
               onChange={onChange}
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             />

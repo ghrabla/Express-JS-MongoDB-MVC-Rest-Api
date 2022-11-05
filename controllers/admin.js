@@ -24,7 +24,7 @@ module.exports = class admin {
     }
   }
   static async apiCheckadmin(req, res, next) { 
-    try {
+    try { 
       // let email = req.body.email || {};
       // let password = req.body.password || {};
       const admin = await adminService.adminlogin(req.body);
