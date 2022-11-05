@@ -1,5 +1,9 @@
 import { useState,useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updatetrip,gettrips } from "../services/trips/tripSlice";
 import axios from "axios";
+import Swal from 'sweetalert2'
+
 
 
 const Updateform = ({showupdate,funshowupdate}) => {
@@ -11,6 +15,10 @@ const Updateform = ({showupdate,funshowupdate}) => {
     price: "",
     id_bus: "",
   });
+    const { depart_city, arrive_city, depart_date, arrive_date, price, id_bus } =
+     formData;
+
+    const dispatch = useDispatch();
 
     const [city,setcity] = useState([]) 
     const [bus, setbus] = useState([]);
@@ -23,6 +31,37 @@ const Updateform = ({showupdate,funshowupdate}) => {
         [e.target.name]: e.target.value,
       }))
     }
+    
+    const onSubmit = async (e) => {
+      e.preventDefault();
+      const tripData = {
+        depart_city,
+        arrive_city,
+        depart_date,
+        arrive_date,
+        price,
+        id_bus,
+      };
+      if(tripData.depart_city!='' && tripData.arrive_city!='' && tripData.depart_date!='' && tripData.arrive_date!='' && tripData.price!='' && tripData.id_bus!=''){
+         if(tripData.depart_city === tripData.arrive_city){
+          Swal.fire({
+            title : 'depart and arrive city are the same !',
+            type : 'warning'
+        })
+         }else{
+           dispatch(updatetrip(tripData));
+         }
+        // const resp = await dispatch(gettrips());
+        // return resp;
+  
+      }else{
+        Swal.fire({
+          title : 'please fill all the feilds !',
+          type : 'warning'
+      })
+      }
+      // setText("");
+    };
 
     useEffect(()=>{
       const fetchcities = async () =>{
