@@ -13,6 +13,15 @@ const createtrip = async (tripData) => {
   Swal.fire( 'please fill all feilds !', 'warning')
  }
 }
+const updatetrip = async (API_URL,tripData) => {
+ if(tripData){
+  const response = await axios.put(API_URL+'trip/'+API_URL, tripData)
+  Swal.fire('Updated!', '', 'success')
+  return response.data
+ }else{
+  Swal.fire( 'please fill all feilds !', 'warning')
+ }
+}
 
 // Get user trips
 const gettrips = async (token) => {
@@ -23,6 +32,13 @@ const gettrips = async (token) => {
   }
   const response = await axios.get(API_URL+'trip')
   return response.data
+}
+
+// get one trip by id 
+const getonetrip = async (tripId) =>{
+    axios.get(API_URL+'trip/'+tripId).then((data) =>{
+      console.log(data)
+    })
 }
 
 // Delete user trip
@@ -40,7 +56,9 @@ const deletetrip = async (tripId) => {
 
 const tripService = {
   createtrip,
+  updatetrip,
   gettrips,
+  getonetrip,
   deletetrip,
 }
 

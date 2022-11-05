@@ -30,6 +30,25 @@ export const createtrip = createAsyncThunk(
     }
   }
 )
+export const updatetrip = createAsyncThunk(
+  'trips/update',
+  async (tripData,{ dispatch, getState }) => {
+    try { 
+      // const token = thunkAPI.getState().auth.user.token
+      const res = await tripService.updatetrip(tripData)
+      dispatch(gettrips())
+      return res;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      // return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
 
 // Get user trips
 export const gettrips = createAsyncThunk(
@@ -38,6 +57,24 @@ export const gettrips = createAsyncThunk(
     try {
       // const token = thunkAPI.getState().auth.user.token
       return await tripService.gettrips()
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+// Get user trips
+export const getonetrip = createAsyncThunk(
+  'trips/getone',
+  async (_, thunkAPI) => {
+    try {
+      // const token = thunkAPI.getState().auth.user.token
+      return await tripService.getonetrip()
     } catch (error) {
       const message =
         (error.response &&
