@@ -13,6 +13,7 @@ const createtrip = async (tripData) => {
   Swal.fire( 'please fill all feilds !', 'warning')
  }
 }
+
 const updatetrip = async (API_URL,tripData) => {
  if(tripData){
   const response = await axios.put(API_URL+'trip/'+API_URL, tripData)

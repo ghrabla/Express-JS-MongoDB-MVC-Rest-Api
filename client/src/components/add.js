@@ -203,7 +203,7 @@ const Addform = ({ Addpop, showpop }) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-last-name"
             >
-              Arrive city
+              Trip Bus
             </label>
             <select
               name="id_bus"
