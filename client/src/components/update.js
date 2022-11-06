@@ -1,12 +1,13 @@
 import { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updatetrip,gettrips } from "../services/trips/tripSlice";
+import tripService from "../services/trips/tripService";
 import axios from "axios";
 import Swal from 'sweetalert2'
 
 
 
-const Updateform = ({showupdate,funshowupdate}) => {
+const Updateform = ({showupdate,funshowupdate,id_trip}) => {
   const [formData, setFormData] = useState({
     depart_city: "",
     arrive_city: "",
@@ -33,6 +34,7 @@ const Updateform = ({showupdate,funshowupdate}) => {
     }
     
     const onSubmit = async (e) => {
+   
       e.preventDefault();
       const tripData = {
         depart_city,
@@ -49,7 +51,10 @@ const Updateform = ({showupdate,funshowupdate}) => {
             type : 'warning'
         })
          }else{
-           dispatch(updatetrip(tripData));
+           const thetripid = id_trip;
+           console.log(thetripid)
+           tripService.updatetrip(thetripid,tripData)
+          //  dispatch(updatetrip(thetripid,tripData));
          }
         // const resp = await dispatch(gettrips());
         // return resp;

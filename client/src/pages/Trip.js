@@ -39,6 +39,7 @@ const Trip = () => {
   
   const [Addpop,setAddpop] = useState(false);
   const [action,setaction] = useState(false);
+  const [id_trip,setid_trip] = useState(false);
   const [showupdate,setshowupdate] = useState(false); 
   
  
@@ -50,6 +51,10 @@ const Trip = () => {
      setaction(num)
   }
   const funshowupdate = () =>{
+    setshowupdate(!showupdate)
+  }
+  const funshowupdateandid = (_idtrip) =>{
+    setid_trip(_idtrip)
     setshowupdate(!showupdate)
   }
   const Deleteone = (id) =>{
@@ -74,7 +79,7 @@ const Trip = () => {
       <div>
         <Sidebar/>
         <Addform Addpop={Addpop} showpop={showpop}/>
-        <Updateform showupdate={showupdate} funshowupdate={funshowupdate}/>
+        <Updateform showupdate={showupdate} funshowupdate={funshowupdate} id_trip={id_trip}/>
         <Statistic />
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
@@ -162,7 +167,7 @@ const Trip = () => {
                           </td>
                           <div className={action===one ? "block" : "hidden"}>
                           <div class="flex flex-col gap-3" >
-                      <button  class="text-green-500 font-bold" onClick={funshowupdate}><i class="fas fa-edit" ></i>Update</button>
+                      <button  class="text-green-500 font-bold" onClick={()=>{funshowupdateandid(one._id)}}><i class="fas fa-edit" ></i>Update</button>
                       <button class="text-red-500 font-bold" onClick={() => Deleteone(one._id)}><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
                   </div> 
                   </div>
