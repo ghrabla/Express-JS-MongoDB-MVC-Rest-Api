@@ -55,10 +55,8 @@ const Updateform = ({showupdate,funshowupdate}) => {
         // return resp;
   
       }else{
-        Swal.fire({
-          title : 'please fill all the feilds !',
-          type : 'warning'
-      })
+        Swal.fire( 'please fill all the feilds !'
+      )
       }
       // setText("");
     };
@@ -93,6 +91,8 @@ const Updateform = ({showupdate,funshowupdate}) => {
               Depart city
             </label>
             <select
+            name="depart_city"
+            onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
@@ -110,6 +110,8 @@ const Updateform = ({showupdate,funshowupdate}) => {
               Arrive city
             </label>
             <select
+            name="arrive_city"
+            onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
@@ -129,6 +131,8 @@ const Updateform = ({showupdate,funshowupdate}) => {
               Depart date
             </label>
             <input type="datetime-local" min={date}
+            name="depart_date"
+            onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -141,7 +145,9 @@ const Updateform = ({showupdate,funshowupdate}) => {
             >
               Arrive date
             </label>
-            <input type="datetime-local" min={date}
+            <input type="datetime-local" min={formData.depart_date}
+            name="arrive_date"
+            onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
@@ -158,6 +164,8 @@ const Updateform = ({showupdate,funshowupdate}) => {
             <input
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
+              name="price"
+              onChange={onChange}
               type="text"
             />
           </div>
@@ -167,7 +175,7 @@ const Updateform = ({showupdate,funshowupdate}) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-last-name"
             >
-              Arrive city
+              Bus name
             </label>
             <select
               name="id_bus"

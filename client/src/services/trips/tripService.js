@@ -14,9 +14,9 @@ const createtrip = async (tripData) => {
  }
 }
 
-const updatetrip = async (API_URL,tripData) => {
+const updatetrip = async (tripData) => {
  if(tripData){
-  const response = await axios.put(API_URL+'trip/'+API_URL, tripData)
+  const response = await axios.put(API_URL+'trip/6367e87e87787deccc246388', tripData)
   Swal.fire('Updated!', '', 'success')
   return response.data
  }else{
