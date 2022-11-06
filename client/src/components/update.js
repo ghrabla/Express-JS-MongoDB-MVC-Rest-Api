@@ -80,7 +80,7 @@ const Updateform = ({showupdate,funshowupdate}) => {
 
   return (
     <div className={showupdate ? "block" : "hidden"}>
-      <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute ">
+      <form class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute " onSubmit={onSubmit}>
         <a href="javascript:void(0)" class="text-white font-bold flex justify-end text-xl mb-5" onClick={funshowupdate}>
           <i class="fa-solid fa-xmark"></i>
         </a>
@@ -188,9 +188,9 @@ const Updateform = ({showupdate,funshowupdate}) => {
           </div>
         </div>
         <div class="p-2 w-full">
-          <a class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer">
+          <button class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer" type="submit">
             Update
-          </a>
+          </button>
         </div>
       </form>
     </div>
