@@ -52,9 +52,10 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
         })
          }else{
            const thetripid = id_trip;
-           console.log(thetripid)
+          //  console.log(tripData)
            tripService.updatetrip(thetripid,tripData)
-          //  dispatch(updatetrip(thetripid,tripData));
+           dispatch(gettrips())
+          // dispatch(updatetrip(thetripid,tripData,uuu));
          }
         // const resp = await dispatch(gettrips());
         // return resp;
