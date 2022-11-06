@@ -7,14 +7,14 @@ module.exports = class tripService{
             // console.log(alltrips.id_bus)
             return alltrips;
         } catch (error) {
-            console.log(`Could not fetch trips ${error}`)
+            console.log(`Could not fetch trips ${error}`) 
         }
     } 
 
     static async createtrip(data){
         try {
             const ddate =  data.depart_date.replace('T',' ');
-            const adate =  data.depart_date.replace('T',' ');
+            const adate =  data.arrive_date.replace('T',' ');
             const newtrip = {
                 depart_city: data.depart_city,  
                 arrive_city: data.arrive_city,  

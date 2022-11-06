@@ -44,7 +44,9 @@ module.exports = class trip {
 
   static async apiUpdatetrip(req, res, next) {
     try {
-      const updatedtrip = await tripService.updatetrip(req.params.id,req.body.depart_city,req.body.arrive_city,req.body.depart_date,req.body.arrive_date,req.body.price,req.body.id_bus);
+      const ddate = req.body.depart_date.replace('T',' ');
+      const adate = req.body.arrive_date.replace('T',' ');
+      const updatedtrip = await tripService.updatetrip(req.params.id,req.body.depart_city,req.body.arrive_city,ddate,adate,req.body.price,req.body.id_bus);
       if (updatedtrip.modifiedCount === 0) {
         throw new Error("Unable to update trip, error occord");
       }
