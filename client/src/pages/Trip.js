@@ -7,7 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reset } from '../services/authAdmin/authSlice';
 import { toast } from 'react-toastify';
-import { gettrips,deletetrip } from "../services/trips/tripSlice";
+import { gettrips,deletetrip,getonetrip } from "../services/trips/tripSlice";
+import tripService from "../services/trips/tripService";
 import Swal from 'sweetalert2'
 
 
@@ -41,7 +42,7 @@ const Trip = () => {
   const [action,setaction] = useState(false);
   const [id_trip,setid_trip] = useState(false);
   const [showupdate,setshowupdate] = useState(false); 
-  
+  const [onetrip,setOnetrip] = useState([])
  
 
   const showpop = () =>{
@@ -56,6 +57,13 @@ const Trip = () => {
   const funshowupdateandid = (_idtrip) =>{
     setid_trip(_idtrip)
     setshowupdate(!showupdate)
+    const gettrip = async (id_trip) => {  
+     const res = await tripService.getonetrip(id_trip)
+     setOnetrip(res)
+    //  console.log(res)
+   }
+   gettrip(_idtrip);
+
   }
   const Deleteone = (id) =>{
     Swal.fire({
@@ -79,7 +87,7 @@ const Trip = () => {
       <div>
         <Sidebar/>
         <Addform Addpop={Addpop} showpop={showpop}/>
-        <Updateform showupdate={showupdate} funshowupdate={funshowupdate} id_trip={id_trip}/>
+        <Updateform showupdate={showupdate} funshowupdate={funshowupdate} id_trip={id_trip} onetrip={onetrip}/>
         <Statistic />
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">

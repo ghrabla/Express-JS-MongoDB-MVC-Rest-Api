@@ -73,10 +73,10 @@ export const gettrips = createAsyncThunk(
 // Get user trips
 export const getonetrip = createAsyncThunk(
   'trips/getone',
-  async (_, thunkAPI) => {
+  async (id_trip) => {
     try {
       // const token = thunkAPI.getState().auth.user.token
-      return await tripService.getonetrip()
+      return await tripService.getonetrip(id_trip)
     } catch (error) {
       const message =
         (error.response &&
@@ -84,7 +84,6 @@ export const getonetrip = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-      return thunkAPI.rejectWithValue(message)
     }
   }
 )

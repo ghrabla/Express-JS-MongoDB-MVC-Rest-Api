@@ -1,13 +1,13 @@
 import { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updatetrip,gettrips } from "../services/trips/tripSlice";
+import { updatetrip,gettrips,getonetrip } from "../services/trips/tripSlice";
 import tripService from "../services/trips/tripService";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 
 
-const Updateform = ({showupdate,funshowupdate,id_trip}) => {
+const Updateform = ({showupdate,funshowupdate,id_trip,onetrip}) => {
   const [formData, setFormData] = useState({
     depart_city: "",
     arrive_city: "",
@@ -25,14 +25,15 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
     const [bus, setbus] = useState([]);
     const current = new Date();
     const date = `${current.getFullYear()}-${current.getMonth() + 1}-0${current.getDate()} ${current.getHours()}:${current.getMinutes()}`;
-    // console.log(date)
-    const onChange = (e) => {
+    // console.log(onetrip)
+    const onChange = (e) => { 
       setFormData((prevState) => ({
         ...prevState,
         [e.target.name]: e.target.value,
       }))
     }
-    
+   
+
     const onSubmit = async (e) => {
    
       e.preventDefault();
@@ -98,6 +99,7 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
             </label>
             <select
             name="depart_city"
+            // value={onetrip.depart_city}
             onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -117,6 +119,7 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
             </label>
             <select
             name="arrive_city"
+            // value={onetrip.arrive_city}
             onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -137,6 +140,7 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
               Depart date
             </label>
             <input type="datetime-local" min={date}
+            // value={onetrip.depart_date}
             name="depart_date"
             onChange={onChange}
             id="large"
@@ -152,6 +156,7 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
               Arrive date
             </label>
             <input type="datetime-local" min={formData.depart_date}
+            // value={onetrip.arrive_date}
             name="arrive_date"
             onChange={onChange}
             id="large"
@@ -170,6 +175,7 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
             <input
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
+              // value={onetrip.price}
               name="price"
               onChange={onChange}
               type="text"
@@ -184,7 +190,8 @@ const Updateform = ({showupdate,funshowupdate,id_trip}) => {
               Bus name
             </label>
             <select
-              name="id_bus"
+              name="id_bus"          
+              // value={onetrip.id_bus}
               id="large"
               onChange={onChange}
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"

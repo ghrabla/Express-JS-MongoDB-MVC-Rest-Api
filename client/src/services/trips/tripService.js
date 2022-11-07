@@ -37,9 +37,8 @@ const gettrips = async (token) => {
 
 // get one trip by id 
 const getonetrip = async (tripId) =>{
-    axios.get(API_URL+'trip/'+tripId).then((data) =>{
-      console.log(data)
-    })
+  const res = await axios.get(API_URL+'trip/'+tripId)
+  return res.data
 }
 
 // Delete user trip
