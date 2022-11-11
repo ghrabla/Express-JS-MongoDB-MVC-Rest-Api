@@ -3,6 +3,7 @@ import authReducer from '../services/auth/authSlice'
 import authAdminReducer from '../services/authAdmin/authSlice'
 import tripReducer from '../services/trips/tripSlice'
 import busReducer from '../services/buses/busSlice'
+import resevationReducer from '../services/reservations/reservationSlice'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     authAdmin: authAdminReducer,
     trips: tripReducer,
     buses: busReducer,
+    reservations: resevationReducer
     
   },
 })
