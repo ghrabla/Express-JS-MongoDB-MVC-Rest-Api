@@ -70,7 +70,6 @@ const Bus = () => {
                         <div class="flex">
                           <div class="ml-3">
                             <p class="text-red-900 whitespace-no-wrap font-bold">{one.name}</p>
-                           
                           </div>
                         </div>
                       </td>

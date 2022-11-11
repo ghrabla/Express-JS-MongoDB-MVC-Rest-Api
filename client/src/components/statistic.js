@@ -1,8 +1,17 @@
 import Profile from "./profile";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { use } from "bcrypt/promises";
+import { useEffect } from "react";
+import { gettrips } from "../services/trips/tripSlice";
+import { getbuses } from "../services/buses/busSlice";
 const Statistic = () =>{
-  
+  const dispatch = useDispatch()
   const trips = useSelector((state) => state.trips) 
+  const buses = useSelector((state) => state.buses) 
+  useEffect(()=>{
+    dispatch(gettrips()) 
+    dispatch(getbuses()) 
+  },[])
     // console.log()
 
     return(
@@ -25,7 +34,7 @@ const Statistic = () =>{
                 </div>
                 <div className="ml-4">
                   <span className="font-bold ">total buses</span> 
-                  <p className="font-bold text-xl">30</p>
+                  <p className="font-bold text-xl">{buses.buses.length}</p>
                 </div>
             </div>
             <div className="flex mt-10 px-7 py-5 rounded lg:mx-0 mx-10 lg:w-1/5 shadow-2xl" id="box-sta">
