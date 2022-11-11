@@ -9,14 +9,14 @@ import { reset } from '../services/authAdmin/authSlice';
 import { toast } from 'react-toastify';
 import { gettrips,deletetrip,getonetrip } from "../services/trips/tripSlice";
 import tripService from "../services/trips/tripService";
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 
 
 
 
 const Trip = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()   
+  const dispatch = useDispatch()  
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin 
     )
@@ -122,7 +122,7 @@ const Trip = () => {
                       </thead>
                       {trips.map((one)=>(
                       <tbody>
-                        <tr >
+                        <tr v-for="product in products">
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <div class="flex">
                               <div class="ml-3">
