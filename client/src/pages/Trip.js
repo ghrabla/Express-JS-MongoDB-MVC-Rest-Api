@@ -1,7 +1,7 @@
 import Sidebar from "../components/sidebar";
 import Statistic from "../components/statistic";
-import Addform from "../components/add";
-import Updateform from "../components/update";
+import Addform from "../components/addtrip";
+import Updateform from "../components/updatetrip";
 import { useState,useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
