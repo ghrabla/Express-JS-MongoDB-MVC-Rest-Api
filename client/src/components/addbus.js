@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createbus,getbuses } from "../services/buss/busSlice";
+import { createbus,getbuses } from "../services/buses/busSlice";
 import Swal from 'sweetalert2';
 
 
@@ -33,7 +33,6 @@ const Addform = ({ Addpop, showpop }) => {
      
     };
     if(busData.name!='' && busData.places!='' && busData.matrql!=''){
-      
          dispatch(createbus(busData));
       // const resp = await dispatch(getbuses());
       // return resp;
@@ -66,10 +65,10 @@ const Addform = ({ Addpop, showpop }) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-city"
             >
-              Price
+              Name
             </label>
             <input
-              name="price"
+              name="name"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
               type="text"
@@ -83,10 +82,10 @@ const Addform = ({ Addpop, showpop }) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-city"
             >
-              Price
+              Places
             </label>
             <input
-              name="price"
+              name="places"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
               type="text"
@@ -100,10 +99,10 @@ const Addform = ({ Addpop, showpop }) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-city"
             >
-              Price
+              Matrql
             </label>
             <input
-              name="price"
+              name="matrql"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
               type="text"

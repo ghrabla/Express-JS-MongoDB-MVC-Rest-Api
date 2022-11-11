@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { reset } from '../services/authAdmin/authSlice';
 import { toast } from 'react-toastify';
 import { getbuses } from "../services/buses/busSlice";
+import Addform from "../components/addbus";
 
 const Bus = () => {
 
@@ -16,6 +17,12 @@ const Bus = () => {
     (state) => state.authAdmin
   )
   const {buses} = useSelector((state)=> state.buses)
+
+  const [Addpop,setAddpop] = useState(false);
+  const [action,setaction] = useState(false);
+  const showpop = () =>{
+    setAddpop(!Addpop)
+ }
 
   useEffect(() => {
     if (isError) {
@@ -32,13 +39,15 @@ const Bus = () => {
   return (
     <>
       <div>
+        
+        <Addform Addpop={Addpop} showpop={showpop}/>
         <Sidebar/>
         <Statistic />
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
             <div>
               <p class="text-xl font-semibold leading-tight flex lg:justify-end justify-center">
-                <button class="bg-transparent hover:bg-blue-500 text-cyan-600 font-semibold hover:text-white py-2 px-4 border border-cyan-600 hover:border-transparent rounded">
+                <button class="bg-transparent hover:bg-blue-500 text-cyan-600 font-semibold hover:text-white py-2 px-4 border border-cyan-600 hover:border-transparent rounded" onClick={showpop}>
                   <i class="fa fa-plus" aria-hidden="true"></i> Add Bus
                 </button>
               </p>
