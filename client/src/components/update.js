@@ -99,7 +99,7 @@ const Updateform = ({showupdate,funshowupdate,id_trip,onetrip}) => {
             </label>
             <select
             name="depart_city"
-            // value={onetrip.depart_city}
+            value={onetrip.depart_city}
             onChange={onChange}
             id="large"
             class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"

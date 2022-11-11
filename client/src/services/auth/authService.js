@@ -4,13 +4,17 @@ const API_URL = 'http://localhost:8090/client/'
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post(API_URL+'register', userData)
+   try{
+    const response = await axios.post(API_URL+'register', userData)
 
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
-  }
-
-  return response.data
+    if (response.data) {
+      localStorage.setItem('user', JSON.stringify(response.data))
+    }
+  
+    return response.data     
+   }catch(error){
+     return error;
+   }
 }
 
 // Login user
