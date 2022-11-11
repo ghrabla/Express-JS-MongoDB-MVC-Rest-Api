@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { reset } from '../services/authAdmin/authSlice'
 import { toast } from 'react-toastify'
+import { getreservations } from "../services/reservations/reservationSlice";
 
 const Reservation = () => {
 
@@ -14,6 +15,7 @@ const Reservation = () => {
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin
   )
+  const {reservations} = useSelector((state)=>state.reservations )
 
   useEffect(() => {
     if (isError) {
@@ -23,7 +25,7 @@ const Reservation = () => {
     if (!admin) {
       navigate('/')
     }
-
+    dispatch(getreservations())
     dispatch(reset())
   }, [admin, isError, isSuccess, message, navigate, dispatch])
 
@@ -57,6 +59,7 @@ const Reservation = () => {
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                     </tr>
                   </thead>
+                   {reservations.map((one)=>(
                   <tbody>
                     <tr v-for="product in products">
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -72,13 +75,13 @@ const Reservation = () => {
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex">
                           <div class="ml-3">
-                            <p class="text-red-900 whitespace-no-wrap font-bold">6</p>
+                            <p class="text-red-900 whitespace-no-wrap font-bold">{one.ticket_number}</p>
                            
                           </div>
                         </div>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">55.00</p>
+                        <p class="text-gray-900 whitespace-no-wrap">{one.price}</p>
                         <p class="text-gray-600 whitespace-no-wrap">DH</p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -116,6 +119,7 @@ const Reservation = () => {
               </div>  */}
                     </tr>
                   </tbody>
+                  ))}
                 </table>
               </div>
             </div>
