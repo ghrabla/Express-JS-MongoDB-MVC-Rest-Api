@@ -9,14 +9,14 @@ import { reset } from '../services/authAdmin/authSlice';
 import { toast } from 'react-toastify';
 import { gettrips,deletetrip,getonetrip } from "../services/trips/tripSlice";
 import tripService from "../services/trips/tripService";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 
 
 
 const Trip = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()  
+  const dispatch = useDispatch()   
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin 
     )

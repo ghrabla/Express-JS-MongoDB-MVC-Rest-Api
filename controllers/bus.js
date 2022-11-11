@@ -46,7 +46,7 @@ module.exports = class bus {
     try {
      
 
-      const updatedbus = await busService.updatebus(req.params.id,req.body.name,req.body.places);
+      const updatedbus = await busService.updatebus(req.params.id,req.body.name,req.body.places,req.body.matrql);
 
       if (updatedbus.modifiedCount === 0) {
         throw new Error("Unable to update bus, error occord");

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reset } from '../services/authAdmin/authSlice';
 import { toast } from 'react-toastify';
+import { getbuses } from "../services/buses/busSlice";
 
 const Bus = () => {
 
@@ -14,6 +15,7 @@ const Bus = () => {
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin
   )
+  const {buses} = useSelector((state)=> state.buses)
 
   useEffect(() => {
     if (isError) {
@@ -23,7 +25,7 @@ const Bus = () => {
     if (!admin) {
       navigate('/')
     }
-
+    dispatch(getbuses())
     dispatch(reset())
   }, [admin, isError, isSuccess, message, navigate, dispatch]) 
 
@@ -61,22 +63,23 @@ const Bus = () => {
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                     </tr>
                   </thead>
+                  {buses.map((one)=>(
                   <tbody>
                     <tr v-for="product in products">
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex">
                           <div class="ml-3">
-                            <p class="text-red-900 whitespace-no-wrap font-bold">ACHKID</p>
+                            <p class="text-red-900 whitespace-no-wrap font-bold">{one.name}</p>
                            
                           </div>
                         </div>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap font-bold">55</p>
+                        <p class="text-gray-900 whitespace-no-wrap font-bold">{one.places}</p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-red-900 whitespace-no-wrap font-bold">
-                          09/12/2022
+                          {one.createdAt}
                         </p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -85,7 +88,7 @@ const Bus = () => {
                             aria-hidden
                             class="absolute inset-0 opacity-50 rounded-full"
                           ></span>
-                          <span class="relative">ACHKID0988L</span>
+                          <span class="relative">{one.matrql}</span>
                         </span>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
@@ -109,6 +112,7 @@ const Bus = () => {
               </div>  */}
                     </tr>
                   </tbody>
+                  ))}
                 </table>
               </div>
             </div>

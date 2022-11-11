@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import busService from './busService'
 
 const initialState = {
-  buss: [],
+  buses: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -18,7 +18,7 @@ export const createbus = createAsyncThunk(
       // console.log(busData)
       // const token = thunkAPI.getState().auth.user.token
       const res = await busService.createbus(busData)
-      dispatch(getbuss())
+      dispatch(getbuses())
       return res;
     } catch (error) {
       const message =
@@ -38,7 +38,7 @@ export const updatebus = createAsyncThunk(
       // const token = thunkAPI.getState().auth.user.token
       
       const res = await busService.updatebus(id_bus,busData)
-      dispatch(getbuss())
+      dispatch(getbuses())
       return res;
     } catch (error) {
       const message =
@@ -53,12 +53,12 @@ export const updatebus = createAsyncThunk(
 )
 
 // Get user buss
-export const getbuss = createAsyncThunk(
+export const getbuses = createAsyncThunk(
   'buss/getAll',
   async (_, thunkAPI) => {
     try {
       // const token = thunkAPI.getState().auth.user.token
-      return await busService.getbuss()
+      return await busService.getbuses()
     } catch (error) {
       const message =
         (error.response &&
@@ -96,7 +96,7 @@ export const deletebus = createAsyncThunk(
       // const token = thunkAPI.getState().auth.user.token
      
     const res = await busService.deletebus(id)
-    dispatch(getbuss());
+    dispatch(getbuses());
     return res;
   
     } catch (error) {
@@ -125,22 +125,22 @@ export const busSlice = createSlice({
       .addCase(createbus.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.buss.push(action.payload)
+        state.buses.push(action.payload)
       })
       .addCase(createbus.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
       })
-      .addCase(getbuss.pending, (state) => {
+      .addCase(getbuses.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getbuss.fulfilled, (state, action) => {
+      .addCase(getbuses.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.buss = action.payload
+        state.buses = action.payload
       })
-      .addCase(getbuss.rejected, (state, action) => {
+      .addCase(getbuses.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
@@ -151,7 +151,7 @@ export const busSlice = createSlice({
       .addCase(deletebus.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.buss = state.buss.filter(
+        state.buses = state.buses.filter(
           (bus) => bus._id !== action.payload.id
         )
       })

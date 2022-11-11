@@ -15,7 +15,8 @@ module.exports = class busService{
             
             const newbus = {
                 name: data.name,  
-                places: data.places
+                places: data.places,
+                matrql: data.matrql
             }
            const response = await new bus(newbus).save();
            return response;
@@ -44,10 +45,10 @@ module.exports = class busService{
         }
     }
 
-    static async updatebus(busId,name, places){
+    static async updatebus(busId,name, places,matrql){
             try {
                 const updateResponse =  await bus.findByIdAndUpdate({_id:busId},
-                    {name, places});
+                    {name, places,matrql});
 
                     return updateResponse;
             } catch (error) {

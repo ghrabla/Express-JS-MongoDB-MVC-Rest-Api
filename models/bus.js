@@ -12,7 +12,10 @@ const busSchema = Schema(
       type: Number,
       required: true,
     },
-
+    matrql:{
+      type: String,
+      required: true
+    }
   },
   { timestamps: true }
 );

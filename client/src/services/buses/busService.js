@@ -25,7 +25,7 @@ const updatebus = async (id_bus,busData) => {
 }
 
 // Get user buss
-const getbuss = async (token) => {
+const getbuses = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ const deletebus = async (busId) => {
 const busService = {
   createbus,
   updatebus,
-  getbuss,
+  getbuses,
   getonebus,
   deletebus,
 }
