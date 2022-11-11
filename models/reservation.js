@@ -9,18 +9,21 @@ const reservationSchema = Schema({
     type: Number,
     required: true,
   },
-  id_owner: { 
+  id_owner:  [{
     type: Schema.Types.ObjectId,
     required: true,
-  },
-  id_trip: {
+    ref:'client'
+  }],
+  id_trip: [{
     type: Schema.Types.ObjectId,
     required: true,
-  },
-  id_bus: {
+    ref:'trip'
+  }],
+  id_bus:  [{
     type: Schema.Types.ObjectId,
     required: true,
-  },
+    ref:'bus'
+  }],
   },
   { timestamps: true }
 );

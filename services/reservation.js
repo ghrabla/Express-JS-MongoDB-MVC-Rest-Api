@@ -3,7 +3,7 @@ const reservation = require("../models/reservation");
 module.exports = class reservationService{
     static async getAllreservations(){
         try {
-            const allreservations = await reservation.find();
+            const allreservations = await reservation.find().populate('id_owner').populate('id_trip').populate('id_bus');
             return allreservations;
         } catch (error) {
             console.log(`Could not fetch reservations ${error}`)

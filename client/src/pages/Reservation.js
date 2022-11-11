@@ -65,9 +65,9 @@ const Reservation = () => {
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex">
                           <div class="ml-3">
-                            <p class="text-red-900 whitespace-no-wrap ">Safi</p>
+                            <p class="text-red-900 whitespace-no-wrap ">{one.id_trip[0].depart_city}</p>
                             <p class="text-green-700 whitespace-no-wrap font-bold">
-                              Rabat
+                            {one.id_trip[0].arrive_city}
                             </p>
                           </div>
                         </div>
@@ -86,7 +86,7 @@ const Reservation = () => {
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-green-600 whitespace-no-wrap font-bold">
-                          kamal ghrabla
+                          {one.id_owner[0].fullname}
                         </p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -95,7 +95,7 @@ const Reservation = () => {
                             aria-hidden
                             class="absolute inset-0 opacity-50 rounded-full"
                           ></span>
-                          <span class="relative">ACHKID</span>
+                          <span class="relative">{one.id_bus[0].name}</span>
                         </span>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
