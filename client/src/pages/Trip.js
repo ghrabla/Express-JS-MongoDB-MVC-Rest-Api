@@ -122,7 +122,7 @@ const Trip = () => {
                       </thead>
                       {trips.map((one)=>(
                       <tbody>
-                        <tr v-for="product in products">
+                        <tr >
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <div class="flex">
                               <div class="ml-3">

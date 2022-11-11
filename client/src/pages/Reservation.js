@@ -59,9 +59,9 @@ const Reservation = () => {
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                     </tr>
                   </thead>
-                   {reservations.map((one)=>(
                   <tbody>
-                    <tr v-for="product in products">
+                   {reservations.map((one)=>(
+                    <tr>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex">
                           <div class="ml-3">
@@ -118,8 +118,8 @@ const Reservation = () => {
                   <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
               </div>  */}
                     </tr>
-                  </tbody>
                   ))}
+                  </tbody>
                 </table>
               </div>
             </div>

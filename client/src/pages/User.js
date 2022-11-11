@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { reset } from '../services/authAdmin/authSlice'
 import { toast } from 'react-toastify'
+import { getclients } from "../services/users/userSlice";
 
 const User = () => {
 
@@ -14,6 +15,7 @@ const User = () => {
   const { admin, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.authAdmin
   )
+  const { clients } = useSelector((state) => state.users)
 
   useEffect(() => {
     if (isError) {
@@ -23,7 +25,7 @@ const User = () => {
     if (!admin) {
       navigate('/')
     }
-
+    dispatch(getclients())
     dispatch(reset())
   }, [admin, isError, isSuccess, message, navigate, dispatch])
 
@@ -49,36 +51,37 @@ const User = () => {
                         joined date
                       </th>
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                        password
+                        status
                       </th>
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="product in products">
+                  {clients.map((one)=>(
+                    <tr>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex">
                           <div class="ml-3">
-                            <p class="text-gray-900 whitespace-no-wrap font-bold">kamal ghrabla</p>
+                            <p class="text-gray-900 whitespace-no-wrap font-bold">{one.fullname}</p>
                             
                           </div>
                         </div>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap">kamalghrabla@gmail.com</p>
+                        <p class="text-gray-900 whitespace-no-wrap">{one.email}</p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-green-600 whitespace-no-wrap font-bold">
-                          11/12/2022
+                          {one.createdAt.replace("T"," ").split("").splice(0,16)}
                         </p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight ">
                           <span
                             aria-hidden
                             class="absolute inset-0 opacity-50 rounded-full"
                           ></span>
-                          <span class="relative">hh170073</span>
+                          <span class="relative">active</span>
                         </span>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
@@ -101,6 +104,7 @@ const User = () => {
                   <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
               </div>  */}
                     </tr>
+                     ))}
                   </tbody>
                 </table>
               </div>
