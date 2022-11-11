@@ -4,13 +4,16 @@ import { use } from "bcrypt/promises";
 import { useEffect } from "react";
 import { gettrips } from "../services/trips/tripSlice";
 import { getbuses } from "../services/buses/busSlice";
+import { getreservations } from "../services/reservations/reservationSlice";
 const Statistic = () =>{
   const dispatch = useDispatch()
   const trips = useSelector((state) => state.trips) 
   const buses = useSelector((state) => state.buses) 
+  const reservations = useSelector((state) => state.reservations) 
   useEffect(()=>{
     dispatch(gettrips()) 
     dispatch(getbuses()) 
+    dispatch(getreservations()) 
   },[])
     // console.log()
 
@@ -52,7 +55,7 @@ const Statistic = () =>{
                 </div>
                 <div className="ml-4">
                   <span className="font-bold ">total reserved</span> 
-                  <p className="font-bold text-xl">12</p>
+                  <p className="font-bold text-xl">{reservations.reservations.length}</p>
                 </div>
             </div>
         </div>
