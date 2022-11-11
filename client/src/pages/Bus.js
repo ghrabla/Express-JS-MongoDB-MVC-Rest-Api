@@ -79,7 +79,7 @@ const Bus = () => {
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-red-900 whitespace-no-wrap font-bold">
-                          {one.createdAt}
+                          {one.createdAt.replace("T"," ").split("").splice(0,16)}
                         </p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
