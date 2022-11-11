@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { reset } from '../services/authAdmin/authSlice'
 import { toast } from 'react-toastify'
-import { getreservations } from "../services/reservations/reservationSlice";
+import { deletereservation, getreservations } from "../services/reservations/reservationSlice";
+import Swal from "sweetalert2";
 
 const Reservation = () => {
 
@@ -16,7 +17,27 @@ const Reservation = () => {
     (state) => state.authAdmin
   )
   const {reservations} = useSelector((state)=>state.reservations )
-
+  const [action,setaction] = useState(false);
+ 
+  const showaction = (num) =>{
+     setaction(num)
+  }
+  const Deleteone = (id) =>{
+   Swal.fire({
+     title: "Are you sure ?",
+     text: "You are going to delete this trip",
+     type: "warning",
+     showCancelButton: true,
+     confirmButtonColor: "black", 
+     cancelButtonColor: "#d33", 
+     confirmButtonText: "Yes",
+     cancelButtonText: "Cancel",
+   }).then((result)=>{
+     if(result.value){
+       dispatch(deletereservation(id))
+   }
+   })
+ }
   useEffect(() => {
     if (isError) {
       toast.error(message)
@@ -99,24 +120,29 @@ const Reservation = () => {
                         </span>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right">
-                        <button
-                          v-if="showaction!=product"
-                          type="button"
-                          class="inline-block text-gray-500 hover:text-gray-700"
-                        >
-                          <svg
-                            class="inline-block h-6 w-6 fill-current"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 6a2 2 0 110-4 2 2 0 010 4zm0 8a2 2 0 110-4 2 2 0 010 4zm-2 6a2 2 0 104 0 2 2 0 00-4 0z" />
-                          </svg>
-                        </button>
-                        {/* <button class="font-bold text-xl" v-if="showaction==product" ><i class="fa-solid fa-xmark"></i></button> */}
-                      </td>
-                      {/* <div class="flex flex-col gap-3" v-if="showaction==product">
-                  <button class="text-green-500 font-bold" ><i class="fas fa-edit" ></i>Update</button>
-                  <button class="text-red-500 font-bold" ><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
-              </div>  */}
+                      <div className={action===one ? "hidden" : "block"}>
+                            <button
+                              onClick={() => showaction(one)}
+                              type="button"
+                              class="inline-block text-gray-500 hover:text-gray-700"
+                            >
+                              <svg
+                                class="inline-block h-6 w-6 fill-current"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 6a2 2 0 110-4 2 2 0 010 4zm0 8a2 2 0 110-4 2 2 0 010 4zm-2 6a2 2 0 104 0 2 2 0 00-4 0z" />
+                              </svg>
+                            </button>
+                            </div>
+                        <div className={action===one ? "block" : "hidden"}>
+                            <button onClick={showaction} class="font-bold text-xl" ><i class="fa-solid fa-xmark"></i></button>
+                            </div>                      </td>
+                      <div className={action===one ? "block" : "hidden"}>
+                          <div class="flex flex-col gap-3" >
+                      <button  class="text-green-500 font-bold" ><i class="fas fa-edit" ></i>Update</button>
+                      <button class="text-red-500 font-bold" onClick={() => Deleteone(one._id)}><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
+                  </div> 
+                  </div>
                     </tr>
                   ))}
                   </tbody>
