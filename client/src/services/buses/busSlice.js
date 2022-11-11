@@ -33,7 +33,7 @@ export const createbus = createAsyncThunk(
 )
 export const updatebus = createAsyncThunk(
   'buss/update',
-  async (id_bus,busData,{ dispatch, getState }) => {
+  async (id_bus,busData,{ dispatch }) => {
     try { 
       // const token = thunkAPI.getState().auth.user.token
       

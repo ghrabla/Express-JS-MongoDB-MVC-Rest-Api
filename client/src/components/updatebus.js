@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createbus,getbuses } from "../services/buses/busSlice";
+import { updatebus,getbuses } from "../services/buses/busSlice";
 import Swal from 'sweetalert2';
+import busService from "../services/buses/busService";
 
 
 const Addform = ({showupdate,funshowupdate,id_bus,onebus}) => {
@@ -33,7 +34,10 @@ const Addform = ({showupdate,funshowupdate,id_bus,onebus}) => {
      
     };
     if(busData.name!='' && busData.places!='' && busData.matrql!=''){
-         dispatch(createbus(busData));
+        const thebusid = id_bus;
+        //  console.log(tripData)
+         busService.updatebus(thebusid,busData)
+         dispatch(getbuses())
       // const resp = await dispatch(getbuses());
       // return resp;
     }else{
