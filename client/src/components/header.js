@@ -21,11 +21,18 @@ const Header = () => {
     const checkData = {
       depart_city,
       arrive_city
-     
     };
    if(checkData.arrive_city != '' && checkData.depart_city != ''){
-    const res = await tripService.checktrip(checkData);
-    console.log(res)
+    if(checkData.arrive_city != checkData.depart_city){
+      const res = await tripService.checktrip(checkData);
+    if(res != ''){
+      console.log(res)
+    }else{
+      Swal.fire('ohh sorry that trip not available yet')
+    }
+    }else{
+      Swal.fire('depart and arrive city are the same')
+    }
    }else{
      Swal.fire('please fill all the feilds','warning')
    }
