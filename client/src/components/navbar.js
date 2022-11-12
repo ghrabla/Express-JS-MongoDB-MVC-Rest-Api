@@ -25,28 +25,28 @@ const Navbar = () => {
              <img src={`${process.env.PUBLIC_URL}/images/TravelBook.svg`}/>
          </div>
          <div className="text-white font-bold">
-             <span><i class="fa fa-envelope" aria-hidden="true"></i> kamalghrabla@gmail.com</span>
-             <span className="ml-8"><i class="fa-solid fa-phone " ></i> 0625467800</span>
-             <span className="ml-8"><i class="fa fa-map-marker" aria-hidden="true"></i> YOUCODE</span>
+             <span><i className="fa fa-envelope" aria-hidden="true"></i> kamalghrabla@gmail.com</span>
+             <span className="ml-8"><i className="fa-solid fa-phone " ></i> 0625467800</span>
+             <span className="ml-8"><i className="fa fa-map-marker" aria-hidden="true"></i> YOUCODE</span>
          </div>
      </div>
      <div className="flex justify-center gap-28 m-4 uppercase">
      <Link path="/home" to="/" exact>
-      <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+      <a href="#"><i className="fa fa-home" aria-hidden="true"></i> Home</a>
       </Link>
-      {user ?(<a href="javascript:void(0)" onClick={onLogout}><i class="fa-solid fa-right-from-bracket"></i> Logout</a>):(
+      {user ?(<a href="javascript:void(0)" onClick={onLogout}><i className="fa-solid fa-right-from-bracket"></i> Logout</a>):(
          <>
             <Link path="/Login" to="/Login" exact>
-          <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+          <a href="#"><i className="fa fa-sign-in" aria-hidden="true"></i> Login</a>
           </Link>
           <Link path="/Register" to="/Register" exact>
-           <a href="#"><i class="fa-solid fa-registered"></i> Register</a>
+           <a href="#"><i className="fa-solid fa-registered"></i> Register</a>
           </Link>
          </>
       )}
       
       
-       <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
+       <a href="#"><i className="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
       
      </div>
      </>

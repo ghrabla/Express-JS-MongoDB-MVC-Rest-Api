@@ -33,7 +33,7 @@ module.exports = class tripService{
     }
     static async checktrip(data){
         try {      
-            const checktrip =  await trip.find({depart_city: data.depart_city,arrive_city: data.arrive_city,});    
+            const checktrip =  await trip.find({depart_city: data.depart_city,arrive_city: data.arrive_city,}).populate("id_bus");    
             return checktrip;
         } catch (error) {
             console.log(`trip not found. ${error}`)

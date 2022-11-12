@@ -16,9 +16,10 @@ const createtrip = async (tripData) => {
 const checktrip = async (formData) => {
  if(formData){
   const response = await axios.post(API_URL+'trip/check', formData)
-  if(response.data){
-    Swal.fire('Yeah there is!', '', 'success')
-  }
+  return response.data
+  // if(response.data){
+  //   Swal.fire('Yeah there is!', '', 'success')
+  // }
  }else{
   Swal.fire( 'please fill all feilds !', 'warning')
  }
