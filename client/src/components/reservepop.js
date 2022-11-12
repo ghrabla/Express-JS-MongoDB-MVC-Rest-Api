@@ -3,15 +3,12 @@
 // import { createbus,getbuses } from "../services/buses/busSlice";
 // import Swal from 'sweetalert2';
 
-
 const Reservepop = ({ Addpop, showpop, trips }) => {
-//   console.log(trips[0])
+  //   console.log(trips[0])
   return (
     <div className={Addpop ? "block" : "hidden"}>
       <form
-        class="w-full max-w-lg absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-80 shadow-md z-50	absolute "
-       
-      >
+      class="w-full max-w-4xl max-h-96 overflow-scroll overflow-x-hidden absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-36 shadow-md z-50 absolute mt-6">
         <a
           href="javascript:void(0)"
           class="text-white font-bold flex justify-end text-xl mb-5"
@@ -19,61 +16,56 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
         >
           <i class="fa-solid fa-xmark"></i>
         </a>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="grid-city"
-            >
-              Name
-            </label>
-            <input
-              name="name"
-              class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
-              type="text"
-            />
+        {trips.map((one) => (
+          <div className="flex justify-between bg-white mt-6 rounded">
+            <div>
+              <img
+                className="rounded max-w-xs"
+                src={process.env.PUBLIC_URL + "/image.jpg"}
+                alt=""
+              />
+            </div>
+            <div className="text-black mr-32">
+              <span className="font-bold">price: </span>
+              <span className="font-bold text-red-600">{one.price}</span>
+              <div className="flex flex-col font-bold">
+                <div>
+                  <span>depart city: </span>
+                  <span className="text-green-600"> {one.depart_city}</span>
+                </div>
+                <div>
+                  <span>arrive city: </span>
+                  <span className="text-cyan-600"> {one.arrive_city}</span>
+                </div>
+              </div>
+              <div className="font-bold flex flex-col">
+                <span>depart date: {one.depart_date}</span>
+                <span>arrive date: {one.arrive_date}</span>
+              </div>
+              <span className="font-bold">car name: </span>
+              <span className="font-bold text-red-600">
+                
+                {one.id_bus[0].name}
+              </span>
+              <div class="p-2 w-full ml-40 mt-4">
+                <button
+                  class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
+                  type="submit"
+                >
+                  Reserve
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="grid-city"
-            >
-              Places
-            </label>
-            <input
-              name="places"
-              class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
-              type="text"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="grid-city"
-            >
-              Matrql
-            </label>
-            <input
-              name="matrql"
-              class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
-              type="text"
-            />
-          </div>
-        </div>
-        <div class="p-2 w-full">
+        ))}
+
+        {/* <div class="p-2 w-full">
           <button
             class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
             type="submit">
             Add
           </button>
-        </div>
+        </div> */}
       </form>
     </div>
   );
