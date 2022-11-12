@@ -39,8 +39,14 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
                 </div>
               </div>
               <div className="font-bold flex flex-col">
-                <span>depart date: {one.depart_date}</span>
-                <span>arrive date: {one.arrive_date}</span>
+                <div>
+                <span>depart date: </span>
+                <span  className="text-green-600">{one.depart_date}</span>
+                </div>
+                <div>
+                <span>arrive date: </span>
+                <span  className="text-cyan-600">{one.arrive_date}</span>
+                </div>
               </div>
               <span className="font-bold">car name: </span>
               <span className="font-bold text-red-600">

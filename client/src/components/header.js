@@ -11,7 +11,7 @@ const Header = () => {
   });
   const [city, setcity] = useState([]);
   const [trips, setTrips] = useState([]);
-  const [Addpop, setAddpop] = useState(true);
+  const [Addpop, setAddpop] = useState(false);
   const { depart_city, arrive_city } = formData;
   const onChange = (e) => {
     setData((prevState) => ({
