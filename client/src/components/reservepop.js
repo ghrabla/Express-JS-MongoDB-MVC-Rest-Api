@@ -4,8 +4,8 @@
 // import Swal from 'sweetalert2';
 
 
-const Reservepop = ({ Addpop, showpop }) => {
- 
+const Reservepop = ({ Addpop, showpop, trips }) => {
+//   console.log(trips[0])
   return (
     <div className={Addpop ? "block" : "hidden"}>
       <form
