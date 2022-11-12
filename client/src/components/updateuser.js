@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { updatebus,getbuses } from "../services/buses/busSlice";
+import { useDispatch } from "react-redux"; 
 import Swal from 'sweetalert2';
-import busService from "../services/buses/busService";
+import clientService from "../services/users/userService";
+import { getclients } from "../services/users/userSlice";
 
 
-const Updateform = ({showupdate,funshowupdate,id_bus,onebus}) => {
+const Updateform = ({showupdate,funshowupdate,id_client,oneclient}) => {
   const [formData, setFormData] = useState({
-    name: "",
-    places: "",
-    matrql: ""
+    fullname: "",
+    email: "",
   });
 
-  const { name, places, matrql } =
+  const { fullname, email } =
     formData;
 
   const dispatch = useDispatch();
@@ -27,18 +26,17 @@ const Updateform = ({showupdate,funshowupdate,id_bus,onebus}) => {
  
   const onSubmit = async (e) => {
     e.preventDefault();
-    const busData = {
-      name,
-      places,
-      matrql
+    const clientData = {
+      fullname,
+      email,
      
     };
-    if(busData.name!='' && busData.places!='' && busData.matrql!=''){
-        const thebusid = id_bus;
+    if(clientData.fullname!='' && clientData.email!='' ){
+        const theclientid = id_client;
         //  console.log(tripData)
-         busService.updatebus(thebusid,busData)
-         dispatch(getbuses())
-      // const resp = await dispatch(getbuses());
+         clientService.updateclient(theclientid,clientData)
+         dispatch(getclients())
+      // const resp = await dispatch(getclientes());
       // return resp;
     }else{
       Swal.fire({
@@ -69,12 +67,12 @@ const Updateform = ({showupdate,funshowupdate,id_bus,onebus}) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-city"
             >
-              Name
+              fullame
             </label>
             <input
-              name="name"
+              name="fullname"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
+             
               type="text"
               onChange={onChange}
             />
@@ -86,29 +84,12 @@ const Updateform = ({showupdate,funshowupdate,id_bus,onebus}) => {
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="grid-city"
             >
-              Places
+              email
             </label>
             <input
-              name="places"
+              name="email"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
-              type="text"
-              onChange={onChange}
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="grid-city"
-            >
-              Matrql
-            </label>
-            <input
-              name="matrql"
-              class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-city"
+             
               type="text"
               onChange={onChange}
             />

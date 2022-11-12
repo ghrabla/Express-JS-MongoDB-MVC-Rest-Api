@@ -5,8 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { reset } from '../services/authAdmin/authSlice'
 import { toast } from 'react-toastify'
+import clientService from "../services/users/userService";
 import { deleteclient, getclients } from "../services/users/userSlice";
 import Swal from "sweetalert2";
+import Updateform from "../components/updateuser";
 
 const User = () => {
 
@@ -19,9 +21,26 @@ const User = () => {
   const { clients } = useSelector((state) => state.users)
 
  const [action,setaction] = useState(false);
+  const [id_client,setid_client] = useState(false);
+  const [showupdate,setshowupdate] = useState(false); 
+  const [oneclient,setOneclient] = useState([])
  
  const showaction = (num) =>{
     setaction(num)
+ }
+ const funshowupdate = () =>{
+  setshowupdate(!showupdate)
+ }
+ const funshowupdateandid = (_idclient) =>{
+  setid_client(_idclient)
+  setshowupdate(!showupdate)
+  const getclient = async (id_client) => {  
+   const res = await clientService.getoneclient(id_client)
+   setOneclient(res)
+  //  console.log(res)
+ }
+ getclient(_idclient);
+ 
  }
  const Deleteone = (id) =>{
   Swal.fire({
@@ -56,6 +75,7 @@ const User = () => {
       <div>
         <Sidebar/>
         <Statistic />
+        <Updateform showupdate={showupdate} funshowupdate={funshowupdate} id_client={id_client} oneclient={oneclient}/>
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -127,7 +147,7 @@ const User = () => {
                             </td>
                       <div className={action===one ? "block" : "hidden"}>
                           <div class="flex flex-col gap-3" >
-                      <button  class="text-green-500 font-bold" ><i class="fas fa-edit" ></i>Update</button>
+                      <button  class="text-green-500 font-bold" onClick={()=>{funshowupdateandid(one._id)}}><i class="fas fa-edit" ></i>Update</button>
                       <button class="text-red-500 font-bold" onClick={() => Deleteone(one._id)}><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
                   </div> 
                   </div>
