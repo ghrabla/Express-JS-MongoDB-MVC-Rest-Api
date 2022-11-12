@@ -1,7 +1,13 @@
 import React from "react";
 import { useState,useEffect } from "react";
+import tripService from "../services/trips/tripService";
 
 const Header = () => {
+  const [formData,setDepart] = useState()
+  const {depart_city,arrive_city} = formData;
+  const checkthetrip = async (formData) =>{
+   const res = await tripService.checktrip(formData);
+  }
   const [city,setcity] = useState([]) 
       useEffect(()=>{
         const fetchcities = async () =>{
@@ -24,6 +30,7 @@ const Header = () => {
           <h1 className="text-4xl font-bold ">OWN DREAM CITY TOO MUCH FAST</h1>
           <div className="flex mt-5 mx-10 justify-center">
           <select
+            name="depart_city"
             id="large"
             class="cursor-pointer block py-3 px-2  text-base text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
@@ -33,6 +40,7 @@ const Header = () => {
         ))}
           </select>
           <select
+            name="arrive_city"
             id="large"
             class="cursor-pointer block py-3 px-2 text-base text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
