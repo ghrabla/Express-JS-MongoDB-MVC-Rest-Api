@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 
 const Addform = ({ Addpop, showpop }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ 
     depart_city: "",
     arrive_city: "",
     depart_date: "",

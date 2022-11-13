@@ -7,8 +7,12 @@ import Swal from 'sweetalert2';
 const Reservepop = ({ Addpop, showpop, trips }) => {
   //   console.log(trips[0])
   const [number,setNumber] = useState(1);
-  const increment = () => {
-    setNumber(number+1)
+  const increment = (num) => {
+      if(number<num){
+        setNumber(number+1)
+      }else{
+        return
+      }
   }
   const decrement = () => {
     if(number>1){
@@ -16,6 +20,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
     }else{
       return
     }
+   
     
   }
   const dispatch = useDispatch();
@@ -47,7 +52,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
   return (
     <div className={Addpop ? "block" : "hidden"}>
       <form
-      class="w-full max-w-4xl max-h-96 overflow-scroll overflow-x-hidden absolute bg-gray-500 rounded  p-10 mx-auto ml:0 lg:ml-36 shadow-md z-50 absolute mt-6">
+      class="w-full max-w-4xl max-h-96 overflow-scroll overflow-x-hidden fixed bg-cyan-600 rounded p-10 mx-auto ml:0 lg:ml-36 shadow-md z-50 mt-6">
         <a
           href="javascript:void(0)"
           class="text-white font-bold flex justify-end text-xl mb-5"
@@ -94,9 +99,9 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
               </span>
               <div className="flex justify-between p-2 w-full ml-50 mt-4">
                   <div className="flex justify-around">
-                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={increment}>+</a>
+                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>increment(one.id_bus[0].places)}>+</a>
                     <div className="px-8 text-lg font-bold">{number}</div>
-                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={decrement}>-</a>
+                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>decrement()}>-</a>
                   </div>                
                   <a href="javascript:void(0)"
                   onClick={()=>{clientreserve(number,one.price,one._id,one.id_bus[0]._id)}}
