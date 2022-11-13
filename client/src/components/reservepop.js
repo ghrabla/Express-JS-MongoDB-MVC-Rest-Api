@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createreservation } from "../services/reservations/reservationSlice";
 import Swal from 'sweetalert2';
-
+import busService from "../services/buses/busService";
 
 const Reservepop = ({ Addpop, showpop, trips }) => {
   //   console.log(trips[0])
@@ -26,7 +26,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
   const dispatch = useDispatch();
   const user = localStorage.getItem('user')
   
-  const clientreserve = async (ticket_number,price,id_trip,id_bus) => {
+  const clientreserve = async (ticket_number,price,id_trip,bus) => {
     const loggedin = localStorage.getItem("user");
     if(loggedin){
    
@@ -34,7 +34,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
    let user_price = price * user_number;
    let user_id = JSON.parse(user)._id;
    let user_trip = id_trip;
-   let user_bus = id_bus;
+   let user_bus = bus._id;
     const reservationData = {
      ticket_number: user_number,
      price : user_price,
@@ -44,6 +44,14 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
 
     }
       dispatch(createreservation(reservationData))
+      let newplaces = bus.places - user_number;
+      const busupdate = {
+       name: bus.name,
+       places: newplaces,
+       matrql: bus.matrql
+      }
+      busService.updateplaces(bus._id,busupdate)
+      showpop()
     }else{
       Swal.fire("please login if you wanna reserve");
     }
@@ -104,7 +112,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
                     <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>decrement()}>-</a>
                   </div>                
                   <a href="javascript:void(0)"
-                  onClick={()=>{clientreserve(number,one.price,one._id,one.id_bus[0]._id)}}
+                  onClick={()=>{clientreserve(number,one.price,one._id,one.id_bus[0])}}
                   className="font-bold text-white  bg-cyan-600 border-0 py-2 px-8 text-center focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
                   id="btn-reserve">
                   Reserve

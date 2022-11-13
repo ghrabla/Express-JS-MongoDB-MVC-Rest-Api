@@ -23,6 +23,14 @@ const updatebus = async (id_bus,busData) => {
   Swal.fire( 'of course there is a problem !', 'warning')
  }
 }
+const updateplaces = async (id_bus,busData) => {
+ if(busData){
+  const response = await axios.put(API_URL+'bus/'+id_bus, busData)
+  return response.data
+ }else{
+  Swal.fire( 'of course there is a problem !', 'warning')
+ }
+}
 
 // Get user buss
 const getbuses = async (token) => {
@@ -60,6 +68,7 @@ const busService = {
   getbuses,
   getonebus,
   deletebus,
+  updateplaces
 }
 
 export default busService
