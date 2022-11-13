@@ -10,6 +10,8 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
   const user = localStorage.getItem('user')
   
   const clientreserve = async (ticket_number,price,id_trip,id_bus) => {
+    const loggedin = localStorage.getItem("user");
+    if(loggedin){
    
    let user_number = ticket_number;
    let user_price = price * user_number;
@@ -24,7 +26,10 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
      id_bus : user_bus,
 
     }
-    dispatch(createreservation(reservationData))
+      dispatch(createreservation(reservationData))
+    }else{
+      Swal.fire("please login if you wanna reserve");
+    }
     // console.log(reservationData)
   }
   return (
