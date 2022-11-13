@@ -6,6 +6,18 @@ import Swal from 'sweetalert2';
 
 const Reservepop = ({ Addpop, showpop, trips }) => {
   //   console.log(trips[0])
+  const [number,setNumber] = useState(1);
+  const increment = () => {
+    setNumber(number+1)
+  }
+  const decrement = () => {
+    if(number>1){
+      setNumber(number-1)
+    }else{
+      return
+    }
+    
+  }
   const dispatch = useDispatch();
   const user = localStorage.getItem('user')
   
@@ -80,11 +92,16 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
                 
                 {one.id_bus[0].name}
               </span>
-              <div className="p-2 w-full ml-50 mt-4">
-                <a href="javascript:void(0)"
-                  onClick={()=>{clientreserve(2,one.price,one._id,one.id_bus[0]._id)}}
+              <div className="flex justify-between p-2 w-full ml-50 mt-4">
+                  <div className="flex justify-around">
+                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={increment}>+</a>
+                    <div className="px-8 text-lg font-bold">{number}</div>
+                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={decrement}>-</a>
+                  </div>                
+                  <a href="javascript:void(0)"
+                  onClick={()=>{clientreserve(number,one.price,one._id,one.id_bus[0]._id)}}
                   className="font-bold text-white  bg-cyan-600 border-0 py-2 px-8 text-center focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
-                >
+                  id="btn-reserve">
                   Reserve
                 </a >
               </div>
