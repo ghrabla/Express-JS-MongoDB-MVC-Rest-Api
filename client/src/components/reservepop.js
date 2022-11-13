@@ -1,10 +1,32 @@
-// import { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { createbus,getbuses } from "../services/buses/busSlice";
-// import Swal from 'sweetalert2';
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { createreservation } from "../services/reservations/reservationSlice";
+import Swal from 'sweetalert2';
+
 
 const Reservepop = ({ Addpop, showpop, trips }) => {
   //   console.log(trips[0])
+  const dispatch = useDispatch();
+  const user = localStorage.getItem('user')
+  
+  const clientreserve = async (ticket_number,price,id_trip,id_bus) => {
+   
+   let user_number = ticket_number;
+   let user_price = price * user_number;
+   let user_id = JSON.parse(user)._id;
+   let user_trip = id_trip;
+   let user_bus = id_bus;
+    const reservationData = {
+     ticket_number: user_number,
+     price : user_price,
+     id_owner : user_id,
+     id_trip : user_trip,
+     id_bus : user_bus,
+
+    }
+    dispatch(createreservation(reservationData))
+    // console.log(reservationData)
+  }
   return (
     <div className={Addpop ? "block" : "hidden"}>
       <form
@@ -17,7 +39,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
           <i class="fa-solid fa-xmark"></i>
         </a>
         {trips.map((one) => (
-          <div className="flex justify-between bg-white mt-6 rounded">
+          <div className="flex justify-between bg-white mt-6 rounded" key={one._id}>
             <div>
               <img
                 className="rounded max-w-xs"
@@ -53,13 +75,13 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
                 
                 {one.id_bus[0].name}
               </span>
-              <div class="p-2 w-full ml-40 mt-4">
-                <button
-                  class="flex font-bold mx-auto text-white bg-cyan-600 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
-                  type="submit"
+              <div className="p-2 w-full ml-50 mt-4">
+                <a href="javascript:void(0)"
+                  onClick={()=>{clientreserve(2,one.price,one._id,one.id_bus[0]._id)}}
+                  className="font-bold text-white  bg-cyan-600 border-0 py-2 px-8 text-center focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
                 >
                   Reserve
-                </button>
+                </a >
               </div>
             </div>
           </div>
