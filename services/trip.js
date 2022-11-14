@@ -21,6 +21,7 @@ module.exports = class tripService{
                 depart_date: ddate,
                 arrive_date: adate,
                 price: data.price,
+                places: data.places,
                 id_bus: data.id_bus
 
             }
@@ -49,10 +50,10 @@ module.exports = class tripService{
         }
     }
 
-    static async updatetrip(tripId,depart_city,arrive_city,depart_date,arrive_date,price,id_bus){
+    static async updatetrip(tripId,depart_city,arrive_city,depart_date,arrive_date,price,places,id_bus){
             try {
                 const updateResponse =  await trip.findByIdAndUpdate({_id:tripId},
-                    {depart_city, arrive_city,depart_date,arrive_date,price,id_bus});
+                    {depart_city, arrive_city,depart_date,arrive_date,price,places,id_bus});
 
                     return updateResponse;
             } catch (error) {

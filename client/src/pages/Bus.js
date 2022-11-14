@@ -73,7 +73,7 @@ const Deleteone = (id) =>{
     }
     dispatch(getbuses())
     dispatch(reset())
-  }, [admin, isError, isSuccess, message, navigate, dispatch]) 
+  }, [admin, isError, isSuccess, message, navigate, dispatch])  
 
   return (
     <>

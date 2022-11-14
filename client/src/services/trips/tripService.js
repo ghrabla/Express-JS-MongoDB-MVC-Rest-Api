@@ -35,6 +35,15 @@ const updatetrip = async (id_trip,tripData) => {
  }
 }
 
+const updateplaces = async (id_trip,tripData) => {
+  if(tripData){
+   const response = await axios.put(API_URL+'trip/'+id_trip, tripData)
+   return response.data
+  }else{
+   Swal.fire( 'of course there is a problem !', 'warning')
+  }
+ }
+
 // Get user trips
 const gettrips = async (token) => {
   const config = {
@@ -71,7 +80,8 @@ const tripService = {
   gettrips,
   getonetrip,
   deletetrip,
-  checktrip
+  checktrip,
+  updateplaces
 }
 
 export default tripService

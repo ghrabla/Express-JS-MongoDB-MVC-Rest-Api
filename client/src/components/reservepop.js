@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createreservation } from "../services/reservations/reservationSlice";
 import Swal from 'sweetalert2';
-import busService from "../services/buses/busService";
+import tripService from "../services/trips/tripService";
 
 const Reservepop = ({ Addpop, showpop, trips }) => {
   //   console.log(trips[0])
@@ -26,7 +26,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
   const dispatch = useDispatch();
   const user = localStorage.getItem('user')
   
-  const clientreserve = async (ticket_number,price,id_trip,bus) => {
+  const clientreserve = async (ticket_number,price,id_trip,bus,trip) => {
     const loggedin = localStorage.getItem("user");
     if(loggedin){
    
@@ -44,13 +44,17 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
 
     }
       dispatch(createreservation(reservationData))
-      let newplaces = bus.places - user_number;
-      const busupdate = {
-       name: bus.name,
+      let newplaces = trip.places - user_number;
+      const tripupdate = {
+       depart_city: trip.depart_city,
+       arrive_city: trip.arrive_city,
+       depart_date: trip.depart_date,
+       arrive_date: trip.arrive_date,
+       price: trip.price,
        places: newplaces,
-       matrql: bus.matrql
+       id_bus: trip.id_bus[0]._id,
       }
-      busService.updateplaces(bus._id,busupdate)
+      tripService.updateplaces(id_trip,tripupdate)
       showpop()
     }else{
       Swal.fire("please login if you wanna reserve");
@@ -112,7 +116,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
                     <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>decrement()}>-</a>
                   </div>                
                   <a href="javascript:void(0)"
-                  onClick={()=>{clientreserve(number,one.price,one._id,one.id_bus[0])}}
+                  onClick={()=>{clientreserve(number,one.price,one._id,one.id_bus[0],one)}}
                   className="font-bold text-white  bg-cyan-600 border-0 py-2 px-8 text-center focus:outline-none hover:bg-cyan-700 rounded text-lg cursor-pointer"
                   id="btn-reserve">
                   Reserve

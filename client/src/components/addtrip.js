@@ -12,10 +12,11 @@ const Addform = ({ Addpop, showpop }) => {
     depart_date: "",
     arrive_date: "",
     price: "",
+    places: "",
     id_bus: "",
   });
 
-  const { depart_city, arrive_city, depart_date, arrive_date, price, id_bus } =
+  const { depart_city, arrive_city, depart_date, arrive_date, price,places, id_bus } =
     formData;
 
   const dispatch = useDispatch();
@@ -47,9 +48,10 @@ const Addform = ({ Addpop, showpop }) => {
       depart_date,
       arrive_date,
       price,
+      places,
       id_bus,
     };
-    if(tripData.depart_city!='' && tripData.arrive_city!='' && tripData.depart_date!='' && tripData.arrive_date!='' && tripData.price!='' && tripData.id_bus!=''){
+    if(tripData.depart_city!='' && tripData.arrive_city!='' && tripData.depart_date!='' && tripData.arrive_date!='' && tripData.places!='' && tripData.price!='' && tripData.id_bus!=''){
        if(tripData.depart_city === tripData.arrive_city){
         Swal.fire({
           title : 'depart and arrive city are the same !',
@@ -191,6 +193,21 @@ const Addform = ({ Addpop, showpop }) => {
             </label>
             <input
               name="price"
+              class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-city"
+              type="text"
+              onChange={onChange}
+            />
+          </div>
+          <div class="w-full px-3 mt-5 mb-6 md:mb-0">
+            <label
+              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+              for="grid-city"
+            >
+              Places
+            </label>
+            <input
+              name="places"
               class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-city"
               type="text"

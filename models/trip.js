@@ -25,6 +25,10 @@ const tripSchema = Schema(
         type: Number,
         required: true,
       },
+    places: {
+        type: Number,
+        required: true,
+      },
     id_bus: [{
       type: Schema.Types.ObjectId,
       required: true,
