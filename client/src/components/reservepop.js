@@ -111,7 +111,7 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
               </span>
               <div className="flex justify-between p-2 w-full ml-50 mt-4">
                   <div className="flex justify-around">
-                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>increment(one.id_bus[0].places)}>+</a>
+                    <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>increment(one.places)}>+</a>
                     <div className="px-8 text-lg font-bold">{number}</div>
                     <a href="javascrip:void(0)" className="bg-cyan-600 text-white font-bold rounded-full px-3 py-2" onClick={()=>decrement()}>-</a>
                   </div>                
