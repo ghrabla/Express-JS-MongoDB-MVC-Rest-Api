@@ -46,6 +46,15 @@ module.exports = class reservationService{
         }
     }
 
+    static async getreservationbyIdOwner(ownerId){
+        try {
+            const singlereservationResponse =  await reservation.find({id_owner: ownerId}).populate("id_owner").populate("id_trip").populate("id_bus");
+            return singlereservationResponse;
+        } catch (error) {
+            console.log(`reservation not found. ${error}`)
+        }
+    }
+
     static async updatereservation(reservationId,ticket_number,price,id_owner,id_trip,id_bus){
             try {
                 const updateResponse =  await reservation.findByIdAndUpdate({_id:reservationId},

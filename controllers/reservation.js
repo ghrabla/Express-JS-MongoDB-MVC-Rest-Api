@@ -22,6 +22,15 @@ module.exports = class reservation {
       res.status(500).json({ error: error });
     }
   }
+  static async apiGetreservationByIdOwner(req, res, next) { 
+    try {
+      let id = req.params.id || {};
+      const reservation = await reservationService.getreservationbyIdOwner(id);
+      res.json(reservation);
+    } catch (error) {
+      res.status(500).json({ error: error });
+    }
+  }
   static async apiCheckreservation(req, res, next) { 
     try {
       const reservation = await reservationService.checkreservation(req.body);

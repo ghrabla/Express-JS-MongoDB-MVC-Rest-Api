@@ -6,12 +6,12 @@ import tripService from "../services/trips/tripService";
 
 const Ticket = () => {
   //   console.log(trips[0])
-  
+
    
   return (
     <div >  
         {/* {trips.map((one) => ( */}   
-          <div className="flex justify-between bg-white mt-6 rounded" >
+          <div className="flex justify-between bg-white mt-6 rounded">
             <div>
               <img
                 className="rounded max-w-xs"

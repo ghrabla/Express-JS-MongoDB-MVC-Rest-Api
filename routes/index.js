@@ -48,6 +48,7 @@ router.get("/reservation", reservationCtrl.apiGetAllreservations);
 router.post("/reservation/check", reservationCtrl.apiCheckreservation);
 router.post("/reservation",reservationCtrl.apiCreatereservation);
 router.get("/reservation/:id", reservationCtrl.apiGetreservationById);
+router.get("/reservation/owner/:id", reservationCtrl.apiGetreservationByIdOwner);
 router.put("/reservation/:id", reservationCtrl.apiUpdatereservation);
 router.delete("/reservation/:id", reservationCtrl.apiDeletereservation); 
 
