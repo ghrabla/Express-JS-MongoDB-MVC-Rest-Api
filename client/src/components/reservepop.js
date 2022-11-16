@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 import { createreservation } from "../services/reservations/reservationSlice";
 import Swal from 'sweetalert2';
 import tripService from "../services/trips/tripService";
@@ -7,6 +8,7 @@ import tripService from "../services/trips/tripService";
 const Reservepop = ({ Addpop, showpop, trips }) => {
   //   console.log(trips[0])
   const [number,setNumber] = useState(1);
+  const navigate = useNavigate();
   const increment = (num) => {
       if(number<num){
         setNumber(number+1)
@@ -56,6 +58,8 @@ const Reservepop = ({ Addpop, showpop, trips }) => {
       }
       tripService.updateplaces(id_trip,tripupdate)
       showpop()
+      navigate("Ticket")
+
     }else{
       Swal.fire("please login if you wanna reserve");
     }
