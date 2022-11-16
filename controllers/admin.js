@@ -1,6 +1,7 @@
 const adminService = require("../services/admin");
 const AppError = require("../helpers/appError");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 module.exports = class admin {
   static async apiGetAlladmins(req, res, next) {
     try {
@@ -30,7 +31,10 @@ module.exports = class admin {
       const admin = await adminService.adminlogin(req.body);
       const validPassword = await bcrypt.compare(req.body.password, admin[0].password);
       if (validPassword) {
-        res.status(200).json(admin[0]);
+        res.status(200).json({
+         admin: admin[0],
+         token: await adminService.generateToken(admin[0]._id),
+        });
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
@@ -45,7 +49,10 @@ module.exports = class admin {
       console.log(req.body);
       if (!req.body) return next(new AppError("No form data found", 404));
       const createdadmin =  await adminService.createadmin(req.body);
-      res.json(createdadmin);
+      res.json({
+        admin: createdadmin,
+        token: await adminService.generateToken(createdadmin._id)
+      });
     } catch (error) {
       res.status(500).json({ error: error });
     }
@@ -76,4 +83,5 @@ module.exports = class admin {
       res.status(500).json({ error: error });
     }
   }
+ 
 };

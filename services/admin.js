@@ -1,5 +1,6 @@
 const admin = require("../models/admin");
 const bcrypt = require("bcrypt"); 
+const jwt = require('jsonwebtoken');
 
 module.exports = class adminService{
     static async getAlladmins(){
@@ -65,4 +66,11 @@ module.exports = class adminService{
         }
 
     }
+    // Generate JWT
+    static async generateToken(id){
+        return jwt.sign({ id }, process.env.JWT_SECRET, {
+          expiresIn: '10d',
+        })
+      }
+    
 }
