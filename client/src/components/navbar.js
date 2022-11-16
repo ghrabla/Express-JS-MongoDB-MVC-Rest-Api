@@ -45,9 +45,9 @@ const Navbar = () => {
          </>
       )}
       
-      
+      <Link path="/Ticket" to="/Ticket">
        <a href="#"><i className="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
-      
+       </Link>
      </div>
      </>
     )

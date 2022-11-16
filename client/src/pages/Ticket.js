@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createreservation } from "../services/reservations/reservationSlice";
 import Swal from 'sweetalert2';
 import tripService from "../services/trips/tripService";
 
 const Ticket = () => {
   //   console.log(trips[0])
+  const {trips} = useSelector((state)=> state.trips)
   const [number,setNumber] = useState(1);
   const increment = (num) => {
       if(number<num){
