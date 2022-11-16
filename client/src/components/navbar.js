@@ -34,7 +34,16 @@ const Navbar = () => {
      <Link path="/home" to="/" exact>
       <a href="#"><i className="fa fa-home" aria-hidden="true"></i> Home</a>
       </Link>
-      {user ?(<a href="javascript:void(0)" onClick={onLogout}><i className="fa-solid fa-right-from-bracket"></i> Logout</a>):(
+      {user ?(
+         <>
+           <a href="javascript:void(0)" onClick={onLogout}><i className="fa-solid fa-right-from-bracket"></i> Logout</a>
+      
+      <Link path="/Ticket" to="/Ticket">
+       <a href="#"><i className="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
+       </Link>
+         </>
+        )
+      :(
          <>
             <Link path="/Login" to="/Login" exact>
           <a href="#"><i className="fa fa-sign-in" aria-hidden="true"></i> Login</a>
@@ -45,9 +54,6 @@ const Navbar = () => {
          </>
       )}
       
-      <Link path="/Ticket" to="/Ticket">
-       <a href="#"><i className="fa fa-ticket" aria-hidden="true"></i> Ticket</a>
-       </Link>
      </div>
      </>
     )

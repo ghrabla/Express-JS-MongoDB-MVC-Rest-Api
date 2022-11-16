@@ -5,6 +5,7 @@ const clientCtrl = require("../controllers/client");
 const busCtrl = require("../controllers/bus");
 const tripCtrl = require("../controllers/trip");
 const reservationCtrl = require("../controllers/reservation");
+const { protect } = require("../middlewares/adminmiddleware");  
 
 
 // admin routes
