@@ -9,7 +9,7 @@ const { protect } = require("../middlewares/adminmiddleware");
  
 
 // admin routes
-router.get("/admin",protect, adminCtrl.apiGetAlladmins);
+router.get("/admin",adminCtrl.apiGetAlladmins);
 router.post("/admin/login", adminCtrl.apiCheckadmin);
 router.post("/admin/register",adminCtrl.apiCreateadmin);
 router.get("/admin/:id", adminCtrl.apiGetadminById);

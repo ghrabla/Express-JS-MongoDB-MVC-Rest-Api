@@ -68,7 +68,7 @@ module.exports = class adminService{
     }
     // Generate JWT
     static async generateToken(id){
-        return jwt.sign({ id }, process.env.JWT_SECRET, {
+        return jwt.sign({ id }, process.env.SECRET, {
           expiresIn: '10d',
         })
       }

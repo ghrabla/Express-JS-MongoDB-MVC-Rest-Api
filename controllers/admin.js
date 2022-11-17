@@ -31,10 +31,10 @@ module.exports = class admin {
       const admin = await adminService.adminlogin(req.body);
       const validPassword = await bcrypt.compare(req.body.password, admin[0].password);
       if (validPassword) {
-        res.status(200).json({
-         admin: admin[0],
-         token: await adminService.generateToken(admin[0]._id),
-        });
+        res.status(200).json(
+    admin[0],
+        //  token: await adminService.generateToken(admin[0]._id),
+        );
       } else {
         res.status(400).json({ error: "Invalid Password" });
       }
